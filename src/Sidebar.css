@@ -1,0 +1,82 @@
+.Sidebar{
+	position: fixed;
+	left: 0;
+	top: calc(2*var(--body-margin));
+	width: 190px;
+	margin-left: 20.5px;
+}
+
+.Author p{
+	font-size: 24px;
+	text-align: left;
+	font-family: AlTarikh;
+	padding-left: 15px;
+
+}
+
+.list ul{ 
+	list-style-type: none;
+	text-align: left;
+	padding-left: 15px;
+	padding-top: 15px;
+}
+
+.list ul li{
+	padding-bottom: 15px;
+}
+
+.list ul a{
+	font-family: AndaleMono;
+}
+
+.unfocused, .focused {
+	text-decoration: none;
+}
+
+/********************************
+sidebar sub-list
+it becomes bold when hovering
+*********************************/
+
+.sublist .focused{
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.sublist .unfocused{
+	font-weight: normal;
+	text-decoration: none;
+}
+
+.sublist > a:hover {
+	font-weight: bold;
+}
+
+/********************************
+sidebar list
+css sliding underline -- from left to right 
+*********************************/
+
+.list > a {
+	display: inline-block;
+}
+
+.list > a:after {
+	content: '';
+	display: block;
+	height: 1px;
+	width: 0;
+	background: transparent;
+	transition: width .5s ease, background-color .5s ease;
+}
+
+.list > a:hover:after {
+	width: 100%;
+	background: black;
+}
+
+.list > .focused:after {
+	width: 100%;
+	background: black;
+}
+
