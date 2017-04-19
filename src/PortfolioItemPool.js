@@ -12,7 +12,7 @@ class PortfolioItem extends Component {
 		const html_class_subtitle = 'subtitle';
 		const name = html_class + this.props.post
 		return(	
-			<a href={''}>
+			<a href='#'>
 				<div className={name}>		
 					<div className={html_class_hover}>
 						<div className={html_class_info}>
@@ -30,10 +30,31 @@ class PortfolioItem extends Component {
 	}
 }
 
+class MenuBar extends Component {
+	render() {
+		const logo = 'WALO' 
+		return(	
+			<div className='menu-wrapper'>
+				<div className='logo'>
+					{logo}
+				</div>
+				<div className='menu'>
+					<a className='menu-bar' href='#'>		
+						<span className='ham'>
+						</span>
+					</a>
+				</div>
+			</div>
+		)
+	}
+}
+
 class Header extends Component {
 	render() {
 		return(	
-			<div className='header'/>		
+			<div className='header'>		
+				<MenuBar />
+			</div>
 		)
 	}
 }
