@@ -17,7 +17,7 @@ class Focus extends Component {
 	}
 
 	componentDidMount(node) {
-		if (this.props.content == 'WORK' || this.props.content == 'All') {
+		if (this.props.click) {
 			this.focused.click();	
 		}
 	}
@@ -80,11 +80,13 @@ render() {
 			exact: true,
 			name: 'WORK',
 			component: PortfolioItemPool,
+			click: true,
 			sub_routes: [
 				{
 					path: '/',
 					name: 'All',
 					component: PortfolioItemPool,
+					click: true,
 				},
 				{
 					path: '/design',
@@ -117,14 +119,14 @@ render() {
 			const subgroup = subroutes.map((subroute, subindex) => {
 				return (
 					<li key={index*10+subindex} className={html_class[1]}>
-						<Focus content={subroute.name} path={subroute.path} onClick={(focused) => this.handleClick(focused)} />
+						<Focus content={subroute.name} path={subroute.path} click={subroute.click} onClick={(focused) => this.handleClick(focused)} />
 					</li>
 				);
 			});
 
 			return (
 				<li key={index} className={html_class[0]}>
-					<Focus content={route.name} path={route.path} onClick={(focused) => this.handleClick(focused)} />
+					<Focus content={route.name} path={route.path} click={route.click} onClick={(focused) => this.handleClick(focused)} />
 					<ul>
 						{subgroup}
 					</ul>
@@ -134,7 +136,7 @@ render() {
 		else {
 			return (
 				<li key={index} className={html_class[0]}>
-					<Focus content={route.name} path={route.path} onClick={(focused) => this.handleClick(focused)} />
+					<Focus content={route.name} path={route.path} click={route.click} onClick={(focused) => this.handleClick(focused)} />
 				</li>
 			);
 		
