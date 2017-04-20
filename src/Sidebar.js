@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './Sidebar.css';
+import PortfolioItemPool from './PortfolioItemPool';
+import {
+	BrowserRouter as Router,
+	Route,
+	Link
+} from 'react-router-dom';
 
 class Focus extends Component {
 	constructor() {
@@ -10,16 +16,23 @@ class Focus extends Component {
 		};
 	}
 
+	componentDidMount(node) {
+		if (this.props.content == 'WORK' || this.props.content == 'All') {
+			this.focused.click();	
+		}
+	}
+
 	render() {
 		return(
-			<a 
-			href="#" 
+			<div 
 			className={this.state.html_class} 
 			ref={(thisFocus) => {this.focused = thisFocus}} 
 			onClick={() => this.props.onClick(this.focused)} 
 			>
-				{this.props.content}
-			</a>
+				<Link to={this.props.path}>
+					{this.props.content}
+				</Link>
+			</div>
 		)
 	}
 }
@@ -58,53 +71,105 @@ render() {
 	const author = 'WALO';
 	const list = ['WORK', 'ABOUT', 'MESSAGE ME']; 
 	const sublist = [['All', 'Design', 'Research', 'Illustration']]; 
+	const dfocused = ['WORK', 'All'];
 	const html_class = ['list', 'sublist'];
-	const html_class_1 = 'list';
-	const html_class_2 = 'sublist';
-	const html_class_3 = 'list_a';
-	const html_class_4 = 'sublist_a';
 
-	const group = list.map((item, index) => {
-		if (index < sublist.length && sublist[index] != null)  
+	const routes = [
 		{
-			const subgroup = sublist[index].map((subitem, subindex) => {
+			path: '/',
+			exact: true,
+			name: 'WORK',
+			component: PortfolioItemPool,
+			sub_routes: [
+				{
+					path: '/',
+					name: 'All',
+					component: PortfolioItemPool,
+				},
+				{
+					path: '/design',
+					name: 'Design',
+				},
+				{
+					path: '/research',
+					name: 'Research',
+				},
+				{
+					path: '/illustration',
+					name: 'Illustration',
+				},
+			]
+		},	
+		{
+			path: '/about',
+			name: 'ABOUT',
+		},
+		{
+			path: '/messageme',
+			name: 'MESSAGE ME',
+		},
+	]
+
+
+	const group = routes.map((route, index) => {
+		if (route.sub_routes != null) {
+			const subroutes = route.sub_routes
+			const subgroup = subroutes.map((subroute, subindex) => {
 				return (
 					<li key={index*10+subindex} className={html_class[1]}>
-						<Focus content={subitem} onClick={(focused) => this.handleClick(focused)} />
+						<Focus content={subroute.name} path={subroute.path} onClick={(focused) => this.handleClick(focused)} />
 					</li>
 				);
 			});
 
 			return (
 				<li key={index} className={html_class[0]}>
-					<Focus content={item} onClick={(focused) => this.handleClick(focused)} />
+					<Focus content={route.name} path={route.path} onClick={(focused) => this.handleClick(focused)} />
 					<ul>
 						{subgroup}
 					</ul>
 				</li>
 			);
 		}
-		else{
+		else {
 			return (
 				<li key={index} className={html_class[0]}>
-					<Focus content={item} onClick={(focused) => this.handleClick(focused)} />
+					<Focus content={route.name} path={route.path} onClick={(focused) => this.handleClick(focused)} />
 				</li>
 			);
+		
 		}
+	});
+
+	
+	const myPortfolio = routes.map((route, index) => { 
+		return (
+			<Route	
+				key={index}
+				path={route.path}
+				exact={route.exact}
+				component={route.component}
+			/>
+		);
 	});
 
 
 	return (
-		<div className="Sidebar">
-			<div className="Author">
-				<p>{author}</p>
+		<Router>
+		<div className="myPortfolio">
+			<div className="Sidebar">
+				<div className="Author">
+					<p>{author}</p>
+				</div>
+				<div className="list">
+					<ul>
+					{group}
+					</ul>
+				</div>
 			</div>
-			<div className="list">
-				<ul>
-				{group}
-				</ul>
-			</div>
+			{myPortfolio}
 		</div>
+		</Router>
 	);
 }
 }
