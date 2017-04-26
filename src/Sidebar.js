@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import './Sidebar.css';
 import PortfolioItemPool from './PortfolioItemPool';
+import './PortfolioItemPool.css';
 import {
 	BrowserRouter as Router,
 	Route,
 	Link
 } from 'react-router-dom';
+
+import './Sidebar.css';
+import Quiz from './Quiz';
 
 class Focus extends Component {
 	constructor() {
@@ -67,6 +70,7 @@ handleClick(param) {
 	param.className = html_class_focused;
 }
 
+
 render() {
 	const author = 'WALO';
 	const list = ['WORK', 'ABOUT', 'MESSAGE ME']; 
@@ -83,9 +87,9 @@ render() {
 			click: true,
 			sub_routes: [
 				{
-					path: '/',
+					path: '/all',
 					name: 'All',
-					component: PortfolioItemPool,
+					component: Quiz,
 					click: true,
 				},
 				{
@@ -145,14 +149,41 @@ render() {
 
 	
 	const myPortfolio = routes.map((route, index) => { 
-		return (
-			<Route	
-				key={index}
-				path={route.path}
-				exact={route.exact}
-				component={route.component}
-			/>
-		);
+		if (route.sub_routes != null) {
+			
+			const subgroup = route.sub_routes.map((subroute, index) => {
+				return (
+					<Route	
+						key={index}
+						path={subroute.path}
+						exact={subroute.exact}
+						component={subroute.component}
+					/>
+				);
+			});
+
+			return (
+				<div>
+					<Route	
+						key={index}
+						path={route.path}
+						exact={route.exact}
+						component={route.component}
+					/>
+					{subgroup}
+				</div>
+			);
+		}
+		else {
+			return (
+				<Route	
+					key={index}
+					path={route.path}
+					exact={route.exact}
+					component={route.component}
+				/>
+			);
+		}
 	});
 
 
@@ -169,7 +200,9 @@ render() {
 					</ul>
 				</div>
 			</div>
-			{myPortfolio}
+			<div className="main-portfolio">
+				{myPortfolio}
+			</div>
 		</div>
 		</Router>
 	);

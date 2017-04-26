@@ -124,6 +124,10 @@ class Game extends React.Component {
       xIsNext: (step % 2) ? false : true,
     });
   }
+
+  aaa(){
+	alert('aaa'); 
+  }
   
   handleClick(i) {
     //const history = this.state.history;
@@ -131,6 +135,7 @@ class Game extends React.Component {
     //const current = history[history.length - 1];
     const current = history[this.state.stepNumber];
     const squares = current.squares.slice();
+    this.aaa();
     
     //history = history.slice(0, this.state.stepNumber)
     //alert(this.state.stepNumber)

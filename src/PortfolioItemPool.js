@@ -93,7 +93,7 @@ class Footer extends Component {
 class PortfolioItemPool extends Component {
 	render() {
 		return(
-			<div className='main-portfolio'>		
+			<div className='portfolioitem-pool'>
 				<Wrapper/>
 				<Footer/>
 			</div>

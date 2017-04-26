@@ -11,6 +11,7 @@
 	text-align: left;
 	font-family: AlTarikh;
 	padding-left: 15px;
+	color: #000000;
 
 }
 
@@ -27,6 +28,7 @@
 
 .list ul a{
 	font-family: AndaleMono;
+	color: #000000;
 }
 
 .unfocused a, .focused a {
