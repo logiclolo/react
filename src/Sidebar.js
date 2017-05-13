@@ -10,6 +10,7 @@ import {
 
 import './Sidebar.css';
 import Quiz from './Quiz';
+import MessageMe from './MessageMe';
 
 class Focus extends Component {
 	constructor() {
@@ -95,6 +96,7 @@ render() {
 				{
 					path: '/design',
 					name: 'Design',
+					component: MessageMe,
 				},
 				{
 					path: '/research',
