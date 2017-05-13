@@ -281,8 +281,8 @@ div {
 	}
 
 	.container {
-		margin: var(--body-margin);
-		margin-top: calc(var(--header-width) + 2*var(--remainder-width));
+		/*margin: var(--body-margin);*/
+		margin-top: calc(var(--header-width) + var(--remainder-width));
 	}
 
 
@@ -319,6 +319,7 @@ div {
 
 	.container {
 		/*margin: var(--body-margin);*/
+		margin-top: var(--header-width);
 		padding: var(--remainder-width);	
 	}
 

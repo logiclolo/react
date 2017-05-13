@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './PortfolioItemPool.css';
+import Header from './Header';
 
 class PortfolioItem extends Component {
 
@@ -30,6 +31,7 @@ class PortfolioItem extends Component {
 	}
 }
 
+{/*
 class MenuBar extends Component {
 	render() {
 		const logo = 'WALO' 
@@ -58,6 +60,8 @@ class Header extends Component {
 		)
 	}
 }
+
+*/}
 
 class Container extends Component {
 	render() {
