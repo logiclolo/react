@@ -32,6 +32,7 @@
 	}
 
 
+
 /* ===================(左側導覽)=================== */
 
 	.nav{
@@ -394,12 +395,22 @@
 		body{
 			font-size: 110%;
 		}
+
+		.quiz-container{
+			margin-top: calc(var(--header-width) + var(--remainder-width));
+		
+		}
 	}
 
 	@media only screen and (min-width: 768px)
 	{
 		body{
 			font-size: 120%;
+		}
+
+		.quiz-container{
+			margin-top: calc(var(--header-width) + var(--remainder-width));
+		
 		}
 
 		.butt{
