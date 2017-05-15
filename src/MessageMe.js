@@ -3,6 +3,30 @@ import ReactDOM from 'react-dom';
 import './MessageMe.css';
 import $ from 'jquery';
 
+const nodemailer = require('nodemailer');
+
+let smtpConfig = {
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false, // upgrade later with STARTTLS
+    auth: {
+        user: 'logic1020@gmail.com',
+        pass: 'logic1020'
+    }
+};
+
+// create reusable transporter object using the default SMTP transport
+let transporter = nodemailer.createTransport(smtpConfig);
+
+// setup email data with unicode symbols
+let mailOptions = {
+    from: '<logic1020@gmail.com>', // sender address
+    to: 'logic1020@gmail.com', // list of receivers
+    subject: 'Hello ✔', // Subject line
+    text: 'Hello world ?', // plain text body
+    html: '<b>Hello world ?</b>' // html body
+};
+
 class Question extends Component {
 
 	render() {
@@ -199,6 +223,14 @@ class MessageMe extends Component {
 				$(".message-me-ans a").css('display', 'none'); 
 			}
 		});
+
+	// send mail with defined transport object
+	transporter.sendMail(mailOptions, (error, info) => {
+	    if (error) {
+		return console.log(error);
+	    }
+	    console.log('Message %s sent: %s', info.messageId, info.response);
+	});
 	}
 
 	change() {

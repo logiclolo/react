@@ -8,9 +8,11 @@ import {
 	Link
 } from 'react-router-dom';
 
+import logopic from './img/logo.jpg';
 import './Sidebar.css';
 import Quiz from './Quiz';
 import MessageMe from './MessageMe';
+import $ from 'jquery';
 
 class Focus extends Component {
 	constructor() {
@@ -69,6 +71,9 @@ handleClick(param) {
 	}
 
 	param.className = html_class_focused;
+
+	$('.focused').next().slideDown();
+	$('.unfocused').next().slideUp();
 }
 
 
@@ -194,7 +199,10 @@ render() {
 		<div className="myPortfolio">
 			<div className="Sidebar">
 				<div className="Author">
+					{/*
 					<p>{author}</p>
+					*/}
+					<img src={logopic}/>
 				</div>
 				<div className="list">
 					<ul>

@@ -1,9 +1,14 @@
 .Sidebar{
 	position: fixed;
 	left: 0;
-	top: calc(2*var(--body-margin));
+	top: calc(var(--body-margin));
 	width: 190px;
-	margin-left: 20.5px;
+	margin-left: 35px;
+}
+
+.Author {
+
+	margin-bottom: 50px;
 }
 
 .Author p{
@@ -13,6 +18,10 @@
 	padding-left: 15px;
 	color: #000000;
 
+}
+
+.Author img{
+	width: 125px;
 }
 
 .list ul{ 

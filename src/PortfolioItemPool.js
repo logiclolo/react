@@ -68,9 +68,10 @@ class Container extends Component {
 		return(	
 			<div className='container'>		
 				<PortfolioItem post={'post1'} title={'How good is your English?'} subtitle={'UX/UI Design'} />
-				<PortfolioItem post={'post2'} />
-				<PortfolioItem post={'post3'} />
-				<PortfolioItem post={'post4'} />
+				<PortfolioItem post={'post2'} title={'How good is your English?'} subtitle={'UX/UI Design'} />
+				<PortfolioItem post={'post3'} title={'How good is your English?'} subtitle={'UX/UI Design'} />
+				<PortfolioItem post={'post4'} title={'How good is your English?'} subtitle={'UX/UI Design'} />
+				<PortfolioItem post={'post5'} title={'How good is your English?'} subtitle={'UX/UI Design'} />
 			</div>
 		)
 	}
