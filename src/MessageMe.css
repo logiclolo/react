@@ -1,3 +1,11 @@
+.visible {
+	visibility: visible;
+}
+
+.non-vivsible {
+	visibility: hidden;
+}
+
 .message-me {
 	position: absolute;
 	width: 100%;
@@ -49,7 +57,8 @@
 .message-me-ans a {
 	color: #000000;
 	margin-left: 10px;
-	display: none;
+	visibility: hidden;
+	display: inline-block;
 }
 
 .message-me-select span {
@@ -61,5 +70,11 @@
 	cursor: pointer;
 }
 
-.message-me-email {
+.message-me-email a{
+	visibility: hidden;
+	display: inline-block;
+}
+
+.message-me-email input{
+	margin-left: 6px;
 }

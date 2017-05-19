@@ -3,30 +3,6 @@ import ReactDOM from 'react-dom';
 import './MessageMe.css';
 import $ from 'jquery';
 
-const nodemailer = require('nodemailer');
-
-let smtpConfig = {
-    host: 'smtp.gmail.com',
-    port: 587,
-    secure: false, // upgrade later with STARTTLS
-    auth: {
-        user: 'logic1020@gmail.com',
-        pass: 'logic1020'
-    }
-};
-
-// create reusable transporter object using the default SMTP transport
-let transporter = nodemailer.createTransport(smtpConfig);
-
-// setup email data with unicode symbols
-let mailOptions = {
-    from: '<logic1020@gmail.com>', // sender address
-    to: 'logic1020@gmail.com', // list of receivers
-    subject: 'Hello ✔', // Subject line
-    text: 'Hello world ?', // plain text body
-    html: '<b>Hello world ?</b>' // html body
-};
-
 class Question extends Component {
 
 	render() {
@@ -64,6 +40,9 @@ class MyEmail extends Component {
 				</span>
 				<input type="text" ref={(thisInput)=>{this.input=thisInput}}>
 				</input>
+				<a href='#' onClick={() => this.props.onSend(this.input)}>
+				>
+				</a>
 			</div>
 		)
 	}
@@ -97,7 +76,7 @@ class Answer extends Component {
 			else {
 				return (
 					<div className="message-me-email">
-						<MyEmail/>
+						<MyEmail onSend={(param) => this.props.onSend(param)}/>
 					</div>
 				);
 			}
@@ -188,7 +167,7 @@ class MessageMe extends Component {
 			ques: [
 				"Hi, I'm Walo. And you are ...?",
 				"Hello %s! How can I help?",
-				"Thanks, How can I contack you?",
+				"Thanks, How can I contact you?",
 				"Great, I'll get back to you ASAP!",
 			],
 			table: [
@@ -201,8 +180,11 @@ class MessageMe extends Component {
 	
 	}
 
-	componentDidMount() {
-		this.typewrite()
+	setupHandler() {
+		this.typewrite();
+
+		$(".message-me-ans a").css('visibility', 'hidden'); 
+		$(".message-me-email a").css('visibility', 'hidden'); 
 
 		var disSelect = () => {
 					this.setState({
@@ -216,25 +198,23 @@ class MessageMe extends Component {
 		$("input[type='text']").focus();
 		$("input[type='text']").on("keyup", function(){
 			if(this.value!=""){
-				$(".message-me-ans a").css('display', 'inline-block'); 
+				$(".message-me-ans a").css('visibility', 'visible'); 
+				$(".message-me-email a").css('visibility', 'visible'); 
 				disSelect();
 			}
 			else {
-				$(".message-me-ans a").css('display', 'none'); 
+				$(".message-me-ans a").css('visibility', 'hidden'); 
+				$(".message-me-email a").css('visibility', 'hidden'); 
 			}
 		});
-
-	// send mail with defined transport object
-	transporter.sendMail(mailOptions, (error, info) => {
-	    if (error) {
-		return console.log(error);
-	    }
-	    console.log('Message %s sent: %s', info.messageId, info.response);
-	});
 	}
 
-	change() {
-	
+	componentDidMount() {
+		this.setupHandler();
+
+	}
+
+	componentDidUpdate() {
 	}
 
 	composeNewQues() {
@@ -253,7 +233,7 @@ class MessageMe extends Component {
 			ques: ques,
 		},
 			function() {
-				this.typewrite();
+				this.setupHandler();
 			}	
 		);
 	}
@@ -264,13 +244,59 @@ class MessageMe extends Component {
 			idx: param.getAttribute('name'),
 		},
 			function() {
-				$(".message-me-ans a").css('display', 'inline-block'); 
+				$(".message-me-ans a").css('visibility', 'visible'); 
+				$(".message-me-email a").css('visibility', 'visible'); 
 				$("input[type='text']").val(param.textContent)
 			}	
 		);
 	}
 
 	handleClick() {
+		this.setState({
+			num:  this.state.num + 1,
+		},
+			function() {
+				this.composeNewQues();
+				$("input[type='text']").val('')
+			}	
+		);
+	}
+
+	validateEmail(email) {
+	    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	    return re.test(email);
+	}
+
+	sendEmail(param) {
+		var email = param.value;
+
+		if (!this.validateEmail(email)){
+			alert('Wrong e-amil format!');
+			return
+		}
+
+		fetch('/contactus', {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+			      email: email,
+			      name: 'walo',
+			      age: 12,
+			      // then continue this with the other inputs, such as email body, etc.
+			})
+		})
+		.then(function(response){
+			//response.json()
+			console.log(response);
+		})
+		//.then((responseJson) => {
+			//console.log(responseJson);
+		//})
+		.catch((error) => {console.error(error);})
+			
 		this.setState({
 			num:  this.state.num + 1,
 		},
@@ -304,7 +330,8 @@ class MessageMe extends Component {
 		return( 
 			<div className="message-me">
 				<Question text={this.state.ques[this.state.num]} />
-				<Answer onClick={()=>this.handleClick()} onSelect={(param)=>this.handleSelect(param)} text={this.state.ans[this.state.num]} />
+				<Answer onClick={()=>this.handleClick()} onSelect={(param)=>this.handleSelect(param)} 
+				        onSend={(param)=>this.sendEmail(param)} text={this.state.ans[this.state.num]} />
 			</div>
 		)	
 	}
