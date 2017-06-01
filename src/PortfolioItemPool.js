@@ -19,7 +19,7 @@ class PortfolioItem extends Component {
 		const html_class_subtitle = 'subtitle';
 		const name = html_class + this.props.post
 		return(	
-			<Link to={this.props.path}>
+			<Link to={this.props.path} target='_blank'>
 				<div className={name}>		
 					<div className={html_class_hover}>
 						<div className={html_class_info}>
