@@ -95,7 +95,8 @@ render() {
 				{
 					path: '/all',
 					name: 'All',
-					component: Quiz,
+					//component: Quiz,
+					component: PortfolioItemPool,
 					click: true,
 				},
 				{
@@ -106,6 +107,7 @@ render() {
 				{
 					path: '/research',
 					name: 'Research',
+					component: Quiz,
 				},
 				{
 					path: '/illustration',
@@ -195,13 +197,9 @@ render() {
 
 
 	return (
-		<Router>
 		<div className="myPortfolio">
 			<div className="Sidebar">
 				<div className="Author">
-					{/*
-					<p>{author}</p>
-					*/}
 					<img src={logopic}/>
 				</div>
 				<div className="list">
@@ -214,7 +212,6 @@ render() {
 				{myPortfolio}
 			</div>
 		</div>
-		</Router>
 	);
 }
 }

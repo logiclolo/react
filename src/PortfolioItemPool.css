@@ -9,6 +9,7 @@
 	--item-width: calc((100vw - var(--sidebar-width) - 2*var(--body-margin) - 3*var(--remainder-width))/2);
 
 	--main-height: calc(100vh - 2*var(--body-margin));
+	--main-width: calc(100vw - 2*var(--body-margin));
 }
 
 body {
@@ -115,13 +116,15 @@ div {
 
 .main-portfolio {
 	position: relative;
-	/*left: 190px;*/
-	/*margin-left: 24px;*/
-	/*margin-right: 24px;*/
 	width: calc(100% - var(--sidebar-width));
 	margin-left: var(--sidebar-width);
 	height: var(--main-height);
+}
 
+.main-portfolio-fullscreen {
+	position: relative;
+	width: var(--main-width);
+	height: var(--main-height);
 }
 
 .wrapper {
