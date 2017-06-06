@@ -9,7 +9,6 @@ import result_1 from './img/result_1.jpg';
 import result_2 from './img/result_2.jpg';
 import result_3 from './img/result_3.jpg';
 import result_4 from './img/result_4.jpg';
-import loadScript from './helpers/load-script.js';
 //import EnableHandler from './quiz.js';
 import $ from 'jquery';
 
