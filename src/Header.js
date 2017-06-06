@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './PortfolioItemPool.css';
+import logopic from './img/logo.jpg';
 
 class MenuBar extends Component {
 	render() {
@@ -7,7 +8,7 @@ class MenuBar extends Component {
 		return(	
 			<div className='menu-wrapper'>
 				<div className='logo'>
-					{logo}
+					<img src={logopic}/>
 				</div>
 				<div className='menu'>
 					<a className='menu-bar' href='#'>		
