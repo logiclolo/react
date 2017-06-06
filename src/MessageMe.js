@@ -21,7 +21,7 @@ class Selection extends Component {
 
 	render() {
 		return (
-			<span name={this.props.index+1} ref={(thisSelect)=>{this.select=thisSelect}}
+			<span name={this.props.index} ref={(thisSelect)=>{this.select=thisSelect}}
 					onClick={() => this.props.onSelect(this.select)}>
 				{this.props.select}
 			</span>
@@ -163,6 +163,7 @@ class MessageMe extends Component {
 				["just a passerby", "a friend", "your future employer"],	
 				["let's make friend!", "I want to offer you an interview opportunity"],	
 				[""],	
+				[""],	
 			],
 			ques: [
 				"Hi, I'm Walo. And you are ...?",
@@ -172,10 +173,13 @@ class MessageMe extends Component {
 			],
 			table: [
 				{},
-				{'1': 'stranger', '2': 'my friend', '3': 'boss'},
-				{'1': 'stranger', '2': 'my friend', '3': 'boss'},
+				{'0': 'stranger', '1': 'my friend', '2': 'boss'},
+				{'0': 'stranger', '1': 'my friend', '2': 'boss'},
+				{'0': 'stranger', '1': 'my friend', '2': 'boss'},
 			],
-					
+			name: '',
+			problem: '',
+			email: '',
 		};
 	
 	}
@@ -217,21 +221,40 @@ class MessageMe extends Component {
 	componentDidUpdate() {
 	}
 
+	composePostData(data) {
+		var num = this.state.num;
+
+		if (num==1) {
+			this.setState({name: data});	
+		}
+		else if (num==2) {
+			this.setState({problem: data});	
+		}
+		else if (num==3) {
+			this.setState({email: data},
+				function (){
+					this.sendEmail();	
+				}
+			);	
+		}
+	}
+
 	composeNewQues() {
 		const ques = this.state.ques;
 		const num = this.state.num;
+		var sub = '';
 		if (this.state.isSelected) {
-			const sub = this.state.table[this.state.num][this.state.idx]; 
-			ques[num] = ques[num].replace('%s', sub);
-		
+			sub = this.state.table[this.state.num][this.state.idx]; 
+			this.composePostData(this.state.ans[this.state.num-1][parseInt(this.state.idx)]);
 		}
 		else {
-			const sub = $("input[type='text']").val();
-			ques[num] = ques[num].replace('%s', sub);
+			sub = $("input[type='text']").val();
+			this.composePostData(sub);
 		}
+		ques[num] = ques[num].replace('%s', sub);
 		this.setState({
 			ques: ques,
-		},
+			},
 			function() {
 				this.setupHandler();
 			}	
@@ -267,14 +290,38 @@ class MessageMe extends Component {
 	    return re.test(email);
 	}
 
-	sendEmail(param) {
-		var email = param.value;
+	onSend(param) {
+		this.setState({
+			num:  this.state.num + 1,
+		},
+			function() {
+				var email = param.value;
+				if (!this.validateEmail(email)){
+					alert('Wrong e-amil format!');
+					return
+				}
 
-		if (!this.validateEmail(email)){
-			alert('Wrong e-amil format!');
-			return
-		}
+				this.composePostData(email);
+				//this.sendEmail(email);	
+			}	
+		);
+	}
 
+	sendEmail() {
+
+		$.ajax({
+			type: 'POST',
+			url: '/sendemail',
+			data: { name: this.state.name, problem: this.state.problem, email: this.state.email }
+			})
+			.done((data) => {
+			//this.actions.addCharacterSuccess(data.message);
+			})
+			.fail((jqXhr) => {
+			//this.actions.addCharacterFail(jqXhr.responseJSON.message);
+		});
+
+		{/*
 		fetch('/contactus', {
 			method: 'POST',
 			headers: {
@@ -305,6 +352,7 @@ class MessageMe extends Component {
 				$("input[type='text']").val('')
 			}	
 		);
+		*/}
 	}
 
 	typewrite() {
@@ -331,7 +379,7 @@ class MessageMe extends Component {
 			<div className="message-me">
 				<Question text={this.state.ques[this.state.num]} />
 				<Answer onClick={()=>this.handleClick()} onSelect={(param)=>this.handleSelect(param)} 
-				        onSend={(param)=>this.sendEmail(param)} text={this.state.ans[this.state.num]} />
+				        onSend={(param)=>this.onSend(param)} text={this.state.ans[this.state.num]} />
 			</div>
 		)	
 	}

@@ -6,8 +6,11 @@ import {
 	BrowserRouter as Router,
 	Route,
 	Redirect,
+	Switch,
 	Link
 } from 'react-router-dom';
+
+import portfolioitem1 from './PortfolioItem1.js';
 
 class PortfolioItem extends Component {
 
@@ -19,7 +22,8 @@ class PortfolioItem extends Component {
 		const html_class_subtitle = 'subtitle';
 		const name = html_class + this.props.post
 		return(	
-			<Link to={this.props.path} target='_blank'>
+			//<Link to={this.props.path} target='_blank'>
+			<Link to={this.props.path}>
 				<div className={name}>		
 					<div className={html_class_hover}>
 						<div className={html_class_info}>
@@ -73,11 +77,11 @@ class Container extends Component {
 	render() {
 		return(	
 			<div className='container'>		
-				<PortfolioItem post={'post1'} path={'/portfolioitem1'} title={'How good is your English?'} subtitle={'UX/UI Design'} />
-				<PortfolioItem post={'post2'} path={'/portfolioitem2'} title={'How good is your English?'} subtitle={'UX/UI Design'} />
-				<PortfolioItem post={'post3'} path={'/portfolioitem3'} title={'How good is your English?'} subtitle={'UX/UI Design'} />
-				<PortfolioItem post={'post4'} path={'/portfolioitem4'} title={'How good is your English?'} subtitle={'UX/UI Design'} />
-				<PortfolioItem post={'post5'} path={'/portfolioitem5'} title={'How good is your English?'} subtitle={'UX/UI Design'} />
+				<PortfolioItem post={'post1'} path={'/all/item1'} title={'How good is your English?'} subtitle={'UX/UI Design'} />
+				<PortfolioItem post={'post2'} path={'/all/item2'} title={'How good is your English?'} subtitle={'UX/UI Design'} />
+				<PortfolioItem post={'post3'} path={'/all/item3'} title={'How good is your English?'} subtitle={'UX/UI Design'} />
+				<PortfolioItem post={'post4'} path={'/all/item4'} title={'How good is your English?'} subtitle={'UX/UI Design'} />
+				<PortfolioItem post={'post5'} path={'/all/item5'} title={'How good is your English?'} subtitle={'UX/UI Design'} />
 			</div>
 		)
 	}
@@ -102,22 +106,37 @@ class Footer extends Component {
 	}
 }
 class PortfolioItemPool extends Component {
+
+	componentWillReceiveProps(nextProps) {
+		const locationChanged = nextProps.location !== this.props.location
+		window.location.reload()	
+	}
+
 	render() {
 
-		const portfolioitem1 = () => { 
+		const quiz = () => { 
 				window.location.reload()
-				return(<Redirect to='/portfolioitem1' />)
+				return(<Redirect to='/quiz' />)
 		}	
 
-		return(
-			<Router>
-			<div>
+		const portfolioPool = () => {
+
+			return (
 				<div className='portfolioitem-pool'>
 					<Wrapper/>
 					<Footer/>
 				</div>
-				<Route exact path='/portfolioitem1' component={portfolioitem1} />
-			</div>
+			)
+		}
+
+		return(
+			<Router>
+			<Switch>
+				<Route exact path='/' component={portfolioPool} />
+				<Route exact path='/all' component={portfolioPool} />
+				<Route exact path='/all/item1' component={portfolioitem1} />
+				<Route path='/quiz' component={quiz} />
+			</Switch>
 			</Router>
 		) 	
 	}

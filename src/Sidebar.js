@@ -5,6 +5,7 @@ import './PortfolioItemPool.css';
 import {
 	BrowserRouter as Router,
 	Route,
+	Switch,
 	Link
 } from 'react-router-dom';
 
@@ -13,6 +14,7 @@ import './Sidebar.css';
 import Quiz from './Quiz';
 import MessageMe from './MessageMe';
 import $ from 'jquery';
+import portfolioitem1 from './PortfolioItem1.js';
 
 class Focus extends Component {
 	constructor() {
@@ -76,6 +78,10 @@ handleClick(param) {
 	$('.unfocused').next().slideUp();
 }
 
+	componentWillReceiveProps(nextProps) {
+		const locationChanged = nextProps.location !== this.props.location
+		//window.location.reload()	
+	}
 
 render() {
 	const author = 'WALO';
@@ -102,7 +108,7 @@ render() {
 				{
 					path: '/design',
 					name: 'Design',
-					component: MessageMe,
+					//component: MessageMe,
 				},
 				{
 					path: '/research',
@@ -122,11 +128,12 @@ render() {
 		{
 			path: '/messageme',
 			name: 'MESSAGE ME',
+			component: MessageMe,
 		},
 	]
 
 
-	const group = routes.map((route, index) => {
+	const sidebar = routes.map((route, index) => {
 		if (route.sub_routes != null) {
 			const subroutes = route.sub_routes
 			const subgroup = subroutes.map((subroute, subindex) => {
@@ -157,7 +164,7 @@ render() {
 	});
 
 	
-	const myPortfolio = routes.map((route, index) => { 
+	const sidebar_routes = routes.map((route, index) => { 
 		if (route.sub_routes != null) {
 			
 			const subgroup = route.sub_routes.map((subroute, index) => {
@@ -195,7 +202,6 @@ render() {
 		}
 	});
 
-
 	return (
 		<div className="myPortfolio">
 			<div className="Sidebar">
@@ -204,12 +210,12 @@ render() {
 				</div>
 				<div className="list">
 					<ul>
-					{group}
+					{sidebar}
 					</ul>
 				</div>
 			</div>
 			<div className="main-portfolio">
-				{myPortfolio}
+				{sidebar_routes}
 			</div>
 		</div>
 	);

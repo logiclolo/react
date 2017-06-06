@@ -127,6 +127,66 @@ div {
 	height: var(--main-height);
 }
 
+.headline, .sub-headline, .pic, .preface, .title, .desc {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.title {
+	margin-top: 30px;
+}
+
+.desc a {
+	font-family: AndaleMono;
+	color: #f94541;
+}
+
+.portfolio-description .headline span {
+	font-family: AndaleMono;
+	font-size: 28px;
+	letter-spacing: 0.2px;
+	text-align: left;
+	color: #000000;
+	-webkit-text-stroke: 0.8px #4a4a4a;
+}
+
+.portfolio-description .sub-headline span {
+	font-family: AndaleMono;
+	font-size: 21px;
+	text-align: left;
+	color: #4a4a4a;
+}
+
+.portfolio-description .pic img {
+	width: 380px;
+}
+
+.portfolio-description .preface span {
+	font-family: AndaleMono;
+	font-size: 17px;
+	line-height: 1.79;
+	letter-spacing: 0.3px;
+	text-align: left;
+	color: #4a4a4a;
+}
+
+.portfolio-description .title span {
+	font-family: HanziPenSC-W3;
+	font-size: 21px;
+	letter-spacing: 0.3px;
+	text-align: left;
+	color: #000000;
+}
+
+.portfolio-description .desc span {
+	font-family: AndaleMono;
+	font-size: 17px;
+	line-height: 1.79;
+	letter-spacing: 0.3px;
+	text-align: left;
+	color: #4a4a4a;
+}
+
 .wrapper {
 	position: relative;
 }
@@ -219,6 +279,7 @@ div {
 
 .hover-state:hover  .info .title h2 {
 	color: #ffffff;
+	display: block;
 }
 
 .hover-state:hover  .info .subtitle h3 {
@@ -232,11 +293,15 @@ div {
 	font-size: 20px;
 	text-align: left;
 	color: black;
-	-webkit-transform: translate(0,15px);
-	transform: translate(0,15px);
-	-webkit-transition: all .15s 75ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
-	transition: all .15s 75ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	-webkit-transform: translate(0,0px);
+	transform: translate(0,0px);
+	/*-webkit-transition: all .15s 75ms cubic-bezier(0.25, 0.46, 0.45, 0.94);*/
+	/*transition: all .15s 75ms cubic-bezier(0.25, 0.46, 0.45, 0.94);*/
 	color: #000000;
+	/*display: none;*/
+	visibility: hidden;
+	/*transition-delay: 1s;*/
+	/*-webkit-transition-delay: 1s;*/
 }
 
 .title h2 {
@@ -248,10 +313,14 @@ div {
 }
 
 .hover-state:hover .title h2 {
-	-webkit-transform: translate(0,0);
-	transform: translate(0,0);
+	-webkit-transform: translate(0,-15px);
+	transform: translate(0,-15px);
 	-webkit-transition:all .4s cubic-bezier(.455,.03,.515,.955);
 	transition:all .4s cubic-bezier(.455,.03,.515,.955);
+	/*display: block;*/
+	visibility: visible;
+	/*transition-delay: 1s;*/
+	/*-webkit-transition-delay: 1s;*/
 }
 
 .subtitle h3{

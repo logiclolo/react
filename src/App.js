@@ -10,10 +10,12 @@ import {
 	Link
 } from 'react-router-dom';
 import Quiz from './Quiz';
+import PortfolioItemPool from './PortfolioItemPool';
 
 class App extends Component {
 
-  render() {
+  render(){
+
     const home = () => ( 
       <Sidebar/>
     )	
@@ -26,10 +28,10 @@ class App extends Component {
 
     return (
       <Router>
-      <Switch>
-	<Route path='/portfolioitem1' component={portfolioitem1} />
-	<Route path='/' component={home}/>
-      </Switch>
+	      <Switch>
+		<Route path='/quiz' component={portfolioitem1} />
+		<Route path='/' component={home} />
+	      </Switch>
       </Router>
     );
   }

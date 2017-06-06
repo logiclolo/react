@@ -12,7 +12,7 @@
 	height: 100%;
 }
 
-.message-me input, span {
+.message-me input, .message-me span {
 	color: #000000;
 }
 
