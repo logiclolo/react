@@ -51,6 +51,10 @@
 sidebar sub-list
 it becomes bold when hovering
 *********************************/
+.sublist{
+	font-size: 12px;
+	color: #FFFFFF;
+}
 
 .sublist .focused a{
 	font-weight: bold;
