@@ -133,13 +133,35 @@ div {
 	height: var(--main-height);
 }
 
-.headline, .sub-headline, .pic, .preface, .title, .desc {
-	margin-top: 10px;
-	margin-bottom: 10px;
+.headline{
+	margin-top: -10px;
 }
 
-.title {
-	margin-top: 30px;
+.sub-headline{
+	margin-top: 5px;
+}
+
+.pic {
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+.preface{
+	margin-top: 50px;
+	margin-bottom: 180px;
+	margin-left: 5%;
+	margin-right: 18%;
+}
+
+.portfolio-description .title {
+	margin-top: 120px;
+	margin-bottom: 30px;
+}
+
+.desc{
+	margin-top: 25px;
+	margin-bottom: 25px;
+	margin-right: 15%;
 }
 
 .desc a {
@@ -149,8 +171,8 @@ div {
 
 .portfolio-description .headline span {
 	font-family: AndaleMono;
-	font-size: 28px;
-	letter-spacing: 0.2px;
+	font-size: 36px;
+	letter-spacing: 0.08em;
 	text-align: left;
 	color: #000000;
 	-webkit-text-stroke: 0.8px #4a4a4a;
@@ -158,39 +180,59 @@ div {
 
 .portfolio-description .sub-headline span {
 	font-family: AndaleMono;
-	font-size: 21px;
+	font-size: 18px;
 	text-align: left;
 	color: #4a4a4a;
 }
 
 .portfolio-description .pic img {
-	width: 380px;
+	width: 85%;
 }
 
 .portfolio-description .preface span {
 	font-family: AndaleMono;
-	font-size: 17px;
+	font-size: 14px;
 	line-height: 1.79;
-	letter-spacing: 0.3px;
+	letter-spacing: 0.08em;
+	line-height: 30px;
+	text-align: justify;
 	text-align: left;
 	color: #4a4a4a;
 }
 
 .portfolio-description .title span {
 	font-family: HanziPenSC-W3;
-	font-size: 21px;
-	letter-spacing: 0.3px;
+	font-size: 22px;
+	letter-spacing: 0.08em;
 	text-align: left;
 	color: #000000;
 }
 
 .portfolio-description .desc span {
 	font-family: AndaleMono;
-	font-size: 17px;
+	font-size: 14px;
 	line-height: 1.79;
-	letter-spacing: 0.3px;
+	letter-spacing: 0.08em;
+	line-height: 30px;
+	text-align: justify;
 	text-align: left;
 	color: #4a4a4a;
+}
+
+.previous-next div a{
+	display: inline-block;
+	font-family: AndaleMono;
+	font-size: 19px;
+}
+
+.previous-next .previous-p{
+	float: left;
+	margin-left: 20%;
+}
+
+.previous-next .next-p{
+	float: right;
+	margin-right: 20%;
 }
 
 .wrapper {
@@ -217,34 +259,49 @@ div {
 .post1 {
 	left: var(--remainder-width);
 	top: 0;
-	background: url(./img/mainpage_1.jpg) no-repeat;
-	background-size: 100%;
 }
 
 .post2 {
 	right: var(--remainder-width);
 	top: 0;
-	background: url(./img/mainpage_2.jpg) no-repeat;
-	background-size: 100%;
 }
 
 .post3 {
 	left: var(--remainder-width);
 	top: calc(var(--item-width) + var(--remainder-width));
-	background: url(./img/mainpage_3.jpg) no-repeat;
-	background-size: 100%;
 }
 
 .post4 {
 	right: var(--remainder-width);
 	top: calc(var(--item-width) + var(--remainder-width));
-	background: url(./img/mainpage_4.jpg) no-repeat;
-	background-size: 100%;
 }
 
 .post5 {
 	left: var(--remainder-width);
 	top: calc(2 * var(--item-width) + 2 * var(--remainder-width));
+}
+
+.item1 {
+	background: url(./img/mainpage_1.jpg) no-repeat;
+	background-size: 100%;
+}
+
+.item2 {
+	background: url(./img/mainpage_2.jpg) no-repeat;
+	background-size: 100%;
+}
+
+.item3 {
+	background: url(./img/mainpage_3.jpg) no-repeat;
+	background-size: 100%;
+}
+
+.item4 {
+	background: url(./img/mainpage_4.jpg) no-repeat;
+	background-size: 100%;
+}
+
+.item5 {
 	background: url(./img/mainpage_5.jpg) no-repeat;
 	background-size: 100%;
 }
