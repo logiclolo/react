@@ -10,15 +10,12 @@ import {
 } from 'react-router-dom';
 import Navigation from './Navigation';
 
-import mainpic from './img/w1pic_1.gif';
-import w1pic_2 from './img/w1pic_2.jpg';
-import w1pic_3 from './img/w1pic_3.jpg';
-import w1pic_4 from './img/w1pic_4.jpg';
-import w1pic_5 from './img/w1pic_5.jpg';
-import w1pic_6 from './img/w1pic_6.jpg';
-import w1pic_7 from './img/w1pic_7.jpg';
+import mainpic from './img/w2pic_1.gif';
+import w2pic_2 from './img/w2pic_2.gif';
+import w2pic_3 from './img/w2pic_3.jpg';
 
-class PortfolioItemPool1 extends Component {
+
+class PortfolioItemPool2 extends Component {
 
 	constructor() {
 		super();
@@ -37,70 +34,47 @@ class PortfolioItemPool1 extends Component {
 	}
 
 	render() {
-		const headline = 'How Good Is Your English'
-		const sub_headline = 'English Level Test App' 
+		const headline = 'Best Friend for Learing'
+		const sub_headline = 'English Bot& Math Bot' 
 		const main_pic = {mainpic} 
-		const preface = 'English Level Test, an app for you to evaluate your vocabulary and grammar Level. It’s a quick test and just take you less than three minutes. After completing the Test, not only you can recieve the result report immediately, but also can get an free online English session that match your level. '
-
-		
-
-		/********
-		 contents has the following keys:
-		 1. title
-		 2. desc
-		 3. subtitle
-		 4. subdesc 
-		 5. pic
-		 ********/
+		const preface = 'EnglishBot: A Bot that can teach children English conversations as a friend.\nMathBot: A bot that can organize math problems and help teenagers to practice it in a more friendly way.'
 		const contents = [
 			{
 				title: 'Background',
-				desc: "iTutorGroup, a leading online education platform, announced a strategic partnership with ASUS to deliver a service for user to learn English using ASUS tablets, anytime, anywhere, 24-7. What’s more, iTutorGroup also collaborate with IDEO to create a brand-new service.The English Level Test App is part of this iTutorGroup x ASUS x IDEO project, aiming to attract customer to experience iTutorGroup x ASUS’s services during Double 12 shopping festival in China.\n\n Within two weeks of time frame, we turned the concept into prototype, and then development finally."
+				desc: "Foxccon is looking for partnership and  application for its robot. Therefore we proposed a few scenarios about how human being might interact with robot when it comes to learning."
 			},
 
 			{
-				title: 'Insights From Field Study',
-				desc: 'Through direct observation in different Electronics Stores, we discovered our target users are easy to get distracted and won’t spend too much time focusing on one product. Based on these observations, we created a simple and quick test  which allowed all-aged users to join, and takes only few minutes to achieve.  ',
-			
-			},
-
-			{
-				title: 'UI Flow',			 
-				pic: [{w1pic_2}]
+				title: 'EnglishBot',			 
+				pic: [{w2pic_2}]
 			
 			},
 			
 			{
-				title: 'Visual Design',			 
-				pic: [{w1pic_4}, {w1pic_5}, {w1pic_6}, {w1pic_7}]
+				title: 'MathBot',			 
+				pic: [{w2pic_3}]
 
-			},
-
-			{
-				title: 'Collaboration',
-				desc: 'ASUS\nIDEO\niTutorGroup'
 			},
 
 			{
 				title: 'Role',
-				desc: 'Interaction Design\nVisual Design\nPrototyping'
+				desc: 'Concept Design\nIllustration\nPrototyping'
 			},
 
 			{
 				title: 'Deliverables',
-				desc: 'Windows App (Offline)',
-				url: '/quiz',
+				desc: 'Scenarios',
+				url: 'https://app.botsociety.io/s/587493be965fe52c01968175',
 			},
 
 
 				
 		]
-
 		const check = (content) => {
 			if ('url' in content) {
 				return(
 					<Link to={content.url} target='_blank'>
-						Launch Site
+						Prototype
 					</Link>
 				)
 			}
@@ -166,6 +140,8 @@ class PortfolioItemPool1 extends Component {
 			)
 		})
 
+
+
 		return (
 			<Router>
 			<div>
@@ -195,4 +171,4 @@ class PortfolioItemPool1 extends Component {
 	}
 }
 
-export default PortfolioItemPool1;
+export default PortfolioItemPool2;

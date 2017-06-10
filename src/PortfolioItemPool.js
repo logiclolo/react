@@ -10,7 +10,9 @@ import {
 	Link
 } from 'react-router-dom';
 
-import Portfolioitem1 from './PortfolioItem1.js';
+import Portfolioitem1 from './PortfolioItem1';
+import Portfolioitem2 from './PortfolioItem2';
+import Portfolioitem3 from './PortfolioItem3';
 import Quiz from './Quiz';
 
 class PortfolioItem extends Component {
@@ -138,8 +140,8 @@ class PortfolioItemPool extends Component {
 
 		const matching = {
 			item1: Portfolioitem1,
-			item2: Portfolioitem1,
-			item3: Portfolioitem1,
+			item2: Portfolioitem2,
+			item3: Portfolioitem3,
 			item4: Portfolioitem1,
 			item5: Portfolioitem1,
 		}

@@ -10,13 +10,20 @@ import {
 } from 'react-router-dom';
 import Navigation from './Navigation';
 
-import mainpic from './img/w1pic_1.gif';
-import w1pic_2 from './img/w1pic_2.jpg';
-import w1pic_3 from './img/w1pic_3.jpg';
-import w1pic_4 from './img/w1pic_4.jpg';
-import w1pic_5 from './img/w1pic_5.jpg';
-import w1pic_6 from './img/w1pic_6.jpg';
-import w1pic_7 from './img/w1pic_7.jpg';
+import mainpic from './img/w3pic_1.jpg';
+import w3pic_2 from './img/w3pic_2.jpg';
+import w3pic_3 from './img/w3pic_3.jpg';
+import w3pic_4 from './img/w3pic_4.jpg';
+import w3pic_5 from './img/w3pic_5.jpg';
+import w3pic_6 from './img/w3pic_6.jpg';
+import w3pic_7 from './img/w3pic_7.png';
+import w3pic_8 from './img/w3pic_8.png';
+import w3pic_9 from './img/w3pic_9.png';
+import w3pic_10 from './img/w3pic_10.png';
+import w3pic_11 from './img/w3pic_11.png';
+import w3pic_12 from './img/w3pic_12.png';
+
+
 
 class PortfolioItemPool1 extends Component {
 
@@ -37,59 +44,55 @@ class PortfolioItemPool1 extends Component {
 	}
 
 	render() {
-		const headline = 'How Good Is Your English'
-		const sub_headline = 'English Level Test App' 
+		const headline = 'Rebiult Service For Both Internal And External System'
+		const sub_headline = 'Visitor Page& Consultant Portal& Recruiting Center' 
 		const main_pic = {mainpic} 
-		const preface = 'English Level Test, an app for you to evaluate your vocabulary and grammar Level. It’s a quick test and just take you less than three minutes. After completing the Test, not only you can recieve the result report immediately, but also can get an free online English session that match your level. '
-
-		
-
-		/********
-		 contents has the following keys:
-		 1. title
-		 2. desc
-		 3. subtitle
-		 4. subdesc 
-		 5. pic
-		 ********/
+		const preface = 'Visitor Page, Consultant Portal, and Recruiting Center compose the whole consultant& recruitor service. Visitor Page assists applicants to apply for the job; Consultant Portal suppots consultants to teach online courses; Recryiting Center helps recrutors to enlist consultants.'
 		const contents = [
 			{
 				title: 'Background',
-				desc: "iTutorGroup, a leading online education platform, announced a strategic partnership with ASUS to deliver a service for user to learn English using ASUS tablets, anytime, anywhere, 24-7. What’s more, iTutorGroup also collaborate with IDEO to create a brand-new service.The English Level Test App is part of this iTutorGroup x ASUS x IDEO project, aiming to attract customer to experience iTutorGroup x ASUS’s services during Double 12 shopping festival in China.\n\n Within two weeks of time frame, we turned the concept into prototype, and then development finally."
+				desc: "iTutorGroup has been recruiting consultants to teach Englsih online for decades. Both the recruiting and consultant system are out of function and inefficient: Visitor Page suffers from low conversion rate; Consultant Portal lacks of user stickiness; Recruiter Center is full of routine processes.To solve this problems, We not only redesigned the interface of the systems, but also recreated a new service logic for the whole service.",
 			},
 
 			{
-				title: 'Insights From Field Study',
-				desc: 'Through direct observation in different Electronics Stores, we discovered our target users are easy to get distracted and won’t spend too much time focusing on one product. Based on these observations, we created a simple and quick test  which allowed all-aged users to join, and takes only few minutes to achieve.  ',
-			
-			},
-
-			{
-				title: 'UI Flow',			 
-				pic: [{w1pic_2}]
+				title: 'Brainstorming',			 
+				desc: "We interacted with our users during the brainstorming meeting,and tried to capturing their needs and pain points.",
+				pic: [{w3pic_2}]
 			
 			},
 			
 			{
-				title: 'Visual Design',			 
-				pic: [{w1pic_4}, {w1pic_5}, {w1pic_6}, {w1pic_7}]
+				title: 'Blueprint',
+				desc: 'We created the blueprint of current systems, discovering a few problems, and then renovated it into a better version.',
+				pic: [{w3pic_3},{w3pic_4}]
+
+			},
+			
+			{
+				title: 'User Journey',
+				desc: "Although there are conflicts between user needs and company policies, we still found a way out. The user journey we proposed not only increased the efficiency of the whole consultant application process, but also reduced many unnecessary works for the recruiters.",			 
+				pic: [{w3pic_5},{w3pic_6}]
+
+			},
+			
+			{
+				title: 'UI Flow',
+				desc: "We connected the flows between both internal and external system, allowing users to run through the whole service without any obstacle.",			 
+				pic: [{w3pic_7}]
 
 			},
 
 			{
-				title: 'Collaboration',
-				desc: 'ASUS\nIDEO\niTutorGroup'
-			},
+				title: 'Visual Design',
+							 
+				pic: [{w3pic_8},{w3pic_9},{w3pic_10},{w3pic_11},{w3pic_12}]
 
-			{
-				title: 'Role',
-				desc: 'Interaction Design\nVisual Design\nPrototyping'
 			},
 
 			{
 				title: 'Deliverables',
-				desc: 'Windows App (Offline)',
-				url: '/quiz',
+				desc: 'Scenarios', 
+				url: 'https://app.botsociety.io/s/587493be965fe52c01968175',
 			},
 
 
@@ -100,7 +103,7 @@ class PortfolioItemPool1 extends Component {
 			if ('url' in content) {
 				return(
 					<Link to={content.url} target='_blank'>
-						Launch Site
+						Prototype
 					</Link>
 				)
 			}
@@ -113,7 +116,7 @@ class PortfolioItemPool1 extends Component {
 			var pic; 
 
 			if ('desc' in content){
-				desc = (
+				desc =	(
 						<div className='desc'>
 							{content.desc.split("\n").map(i => {
 							    return <div><span>{i}</span></div>;
@@ -124,7 +127,6 @@ class PortfolioItemPool1 extends Component {
 						</div>
 				)
 			}
-
 
 			if ('subtitle' in content){
 				subtitle = (
