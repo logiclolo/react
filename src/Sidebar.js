@@ -15,6 +15,7 @@ import Quiz from './Quiz';
 import MessageMe from './MessageMe';
 import $ from 'jquery';
 import portfolioitem1 from './PortfolioItem1.js';
+import User from './components/User';
 
 class Focus extends Component {
 	constructor() {
@@ -101,23 +102,23 @@ render() {
 				{
 					path: '/all',
 					name: 'All',
-					//component: Quiz,
 					component: PortfolioItemPool,
 					click: true,
 				},
 				{
 					path: '/design',
 					name: 'Design',
-					//component: MessageMe,
+					component: PortfolioItemPool,
 				},
 				{
 					path: '/research',
 					name: 'Research',
-					component: Quiz,
+					component: PortfolioItemPool,
 				},
 				{
 					path: '/illustration',
 					name: 'Illustration',
+					component: PortfolioItemPool,
 				},
 			]
 		},	
@@ -128,7 +129,16 @@ render() {
 		{
 			path: '/messageme',
 			name: 'MESSAGE ME',
+			exact: true,
 			component: MessageMe,
+			sub_routes: [
+				{
+					path: '/messageme/info',
+					name: 'Info',
+					component: User,
+				
+				}
+			]
 		},
 	]
 
