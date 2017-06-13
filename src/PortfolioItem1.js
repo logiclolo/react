@@ -55,7 +55,7 @@ class PortfolioItemPool1 extends Component {
 		const contents = [
 			{
 				title: 'Background',
-				desc: "iTutorGroup, a leading online education platform, announced a strategic partnership with ASUS to deliver a service for user to learn English using ASUS tablets, anytime, anywhere, 24-7. What’s more, iTutorGroup also collaborate with IDEO to create a brand-new service.The English Level Test App is part of this iTutorGroup x ASUS x IDEO project, aiming to attract customer to experience iTutorGroup x ASUS’s services during Double 12 shopping festival in China.\n\n Within two weeks of time frame, we turned the concept into prototype, and then development finally."
+				desc: "iTutorGroup, a \bleading online\b education platform, announced a strategic partnership with ASUS to deliver a service for user to learn English using ASUS tablets, anytime, anywhere, 24-7. What’s more, iTutorGroup also collaborate with IDEO to create a brand-new service.The English Level Test App is part of this iTutorGroup x ASUS x IDEO project, aiming to attract customer to experience iTutorGroup x ASUS’s services during Double 12 shopping festival in China.\n\n Within two weeks of time frame, we turned the concept into prototype, and then development finally."
 			},
 
 			{
@@ -83,13 +83,13 @@ class PortfolioItemPool1 extends Component {
 
 			{
 				title: 'Role',
-				desc: 'Interaction Design\nVisual Design\nPrototyping'
+				desc: 'Interaction Design\nVisual Design\nPrototyping',
 			},
 
 			{
 				title: 'Deliverables',
 				desc: 'Windows App (Offline)',
-				url: '/quiz',
+				url: '/quiz.html',
 			},
 
 
@@ -105,6 +105,47 @@ class PortfolioItemPool1 extends Component {
 				)
 			}
 		}
+
+		const display = contents.map((content, index) => {
+				return Object.keys(content).map(function(key){
+
+					if (key === 'pic') {
+						var pic;
+						pic = content.pic.map(p=>{
+							return <div className='pic'><img src={p[Object.keys(p)[0]]}/></div>
+						})
+
+						return pic
+					}
+					else if (key === 'url'){
+						return(
+							<div className="desc">
+							<Link to={content.url} target='_blank'>
+								Launch Site
+							</Link>
+							</div>
+						)
+					}
+					else {
+						return (
+							<div className={key}>
+								{content[key].split("\n").map(i => {
+									var temp = i.split("\b").map((j, index) =>{
+										if ((index % 2) === 0){
+											return <span>{j}</span>;
+										}
+										else {
+											return <span className='thick'>{j}</span>;
+										}
+									})
+									return <div><span>{temp}</span></div>;
+								})}
+							</div>
+								
+						)
+					}
+				})
+		})
 
 		const group = contents.map((content, index)=>{
 			var desc; 
@@ -183,7 +224,7 @@ class PortfolioItemPool1 extends Component {
 					<span>{preface}</span>
 				</div>
 				<div className='content'>
-					{group}			
+					{display}			
 				</div>
 			</div>
 			<div className='previous-next'>

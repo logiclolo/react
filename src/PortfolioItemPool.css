@@ -30,6 +30,10 @@ h1, h2, h3, h4, h5 {
 	line-height: 1.1;
 }
 
+span .thick {
+	font-weight: bold;
+}
+
 .myPortfolio {
 	position: relative;
 }
@@ -120,6 +124,19 @@ div {
 	top: -8px;
 }
 
+.exit {
+	position: absolute;
+	left: 75%;
+	top: 20%;	
+	z-index: 100;
+	-webkit-transform: rotate(45deg);
+}
+
+.exit a{
+	color: #ffffff;
+	font-size: 25px;
+}
+
 .main-portfolio {
 	position: relative;
 	width: calc(100% - var(--sidebar-width));
@@ -160,12 +177,12 @@ div {
 
 .desc{
 	margin-top: 25px;
-	margin-bottom: 25px;
+	/*margin-bottom: 25px;*/
 	margin-right: 15%;
 }
 
 .desc a {
-	font-family: AndaleMono;
+	font-family: AndaleMono, myAndaleMono;
 	color: #f94541;
 }
 
@@ -200,8 +217,19 @@ div {
 	color: #4a4a4a;
 }
 
+@font-face {
+	font-family: myAndaleMono;
+	src: url('./font/AndaleMono.ttf');
+}
+
+@font-face {
+	font-family: myHanziPenSC;
+	src: url('./font/HanziPenSC.ttf');
+}
+
 .portfolio-description .title span {
-	font-family: HanziPenSC-W3;
+	/*font-family: HanziPenSC-W3;*/
+	font-family: HanziPenSC-W3, myHanziPenSC;
 	font-size: 22px;
 	letter-spacing: 0.08em;
 	text-align: left;
@@ -209,7 +237,8 @@ div {
 }
 
 .portfolio-description .desc span {
-	font-family: AndaleMono;
+	/*font-family: AndaleMono;*/
+	font-family: AndaleMono, myAndaleMono;
 	font-size: 14px;
 	line-height: 1.79;
 	letter-spacing: 0.08em;
@@ -219,9 +248,34 @@ div {
 	color: #4a4a4a;
 }
 
+.portfolio-description .subtitle span {
+	/*font-family: AndaleMono;*/
+	font-family: AndaleMono, myAndaleMono;
+	font-size: 14px;
+	letter-spacing: 0.08em;
+	text-align: left;
+	color: #000000;
+}
+
+.portfolio-description .subdesc span {
+	/*font-family: AndaleMono;*/
+	font-family: AndaleMono, myAndaleMono;
+	font-size: 14px;
+	line-height: 1.79;
+	letter-spacing: 0.08em;
+	line-height: 30px;
+	text-align: justify;
+	text-align: left;
+	color: #4a4a4a;
+}
+
+.previous-next {
+	margin-top: 20px;
+}
+
 .previous-next div a{
 	display: inline-block;
-	font-family: AndaleMono;
+	font-family: AndaleMono, myAndaleMono;
 	font-size: 19px;
 }
 
@@ -437,14 +491,49 @@ div {
 	.main-portfolio {
 		margin-left: 0;	
 		width: 100%;
-	
+		filter:blur(0px);
+		/*transition:all 2s;*/
+	}
+
+	.Sidebar .Author {
+		visibility: hidden;	
+		display: none;	
 	}
 
 	.Sidebar {
-		visibility: hidden;	
-		display: none;	
-		transition: all 1s ease-in-out;
+		/*visibility: hidden;	*/
+		/*display: none;	*/
+		/*transition: all 1s ease-in-out;*/
+		width: 100%;
+		height: 100%;
+		display: flex;
+		opacity: 1;
+		visibility: visible;
+		z-index: 99;
+		margin-left: 0;
+		background-color: rgba(0,0,0,.5);
+		justify-content: center;
+		align-items: center;
+		left: -100%;
+		/*transition:all 2s;*/
 	}
+
+	.blurin {
+		/*animation: bluring 2s ;		*/
+		filter:blur(8px);
+		/*transition:all 2s;*/
+	}
+
+	.list ul a{
+		color: #ffffff;
+	}
+
+	/*@keyframes bluring{*/
+	/*0% {filter:blur(0px)}*/
+	/*100% {filter:blur(50px)}*/
+	/*}*/
+
+
 
 	/*.portfolio-item {*/
 		/*width: var(--item-width);*/
