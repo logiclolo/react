@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import './Sidebar.css';
 import PortfolioItemPool from './PortfolioItemPool';
 import './PortfolioItemPool.css';
 import {
@@ -9,8 +10,8 @@ import {
 	Link
 } from 'react-router-dom';
 
+import Header from './Header';
 import logopic from './img/logo.jpg';
-import './Sidebar.css';
 import Quiz from './Quiz';
 import MessageMe from './MessageMe';
 import $ from 'jquery';
@@ -53,7 +54,16 @@ constructor() {
 	this.state = {
 		lastFocused: null,
 		sub_lastFocused: null,
+		smalldevice_sidebar_show: false,
 	};
+}
+
+smalldevice_sidebar_exit() {
+	this.setState({smalldevice_sidebar_show: false})
+}
+
+smalldevice_sidebar_show() {
+	this.setState({smalldevice_sidebar_show: true})
 }
 
 handleClick(param) {
@@ -77,12 +87,18 @@ handleClick(param) {
 
 	$('.focused').next().slideDown();
 	$('.unfocused').next().slideUp();
+
+	if ($('.Sidebar').hasClass('show') === true) {
+		this.setState({smalldevice_sidebar_show: false})
+	}
+
 }
 
 	componentWillReceiveProps(nextProps) {
 		const locationChanged = nextProps.location !== this.props.location
 		//window.location.reload()	
 	}
+
 
 render() {
 	const author = 'WALO';
@@ -212,9 +228,17 @@ render() {
 		}
 	});
 
+
+	const sidebar_class = (this.state.smalldevice_sidebar_show)? 'Sidebar show': 'Sidebar'
+	const main_portfolio_class= (this.state.smalldevice_sidebar_show)? 'main-portfolio blurin': 'main-portfolio'
+	const header_class = (this.state.smalldevice_sidebar_show)? 'blurin': ''
+
 	return (
 		<div className="myPortfolio">
-			<div className="Sidebar">
+			<div className={sidebar_class}>
+				<div className='exit' onClick={()=>this.smalldevice_sidebar_exit()}>
+					<a>+</a>
+				</div>
 				<div className="Author">
 					<img src={logopic}/>
 				</div>
@@ -224,7 +248,10 @@ render() {
 					</ul>
 				</div>
 			</div>
-			<div className="main-portfolio">
+			<div className={header_class}>
+				<Header onClick={()=>this.smalldevice_sidebar_show()}/>
+			</div>
+			<div className={main_portfolio_class}>
 				{sidebar_routes}
 			</div>
 		</div>

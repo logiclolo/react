@@ -109,7 +109,9 @@ class Wrapper extends Component {
 	render() {
 		return(	
 			<div className='wrapper'>
+				{/*
 				<Header/>
+				*/}
 				<Container category={this.props.category} title={this.props.title}/>
 			</div>
 		)
@@ -126,8 +128,8 @@ class Footer extends Component {
 class PortfolioItemPool extends Component {
 
 	componentWillReceiveProps(nextProps) {
-		const locationChanged = nextProps.location !== this.props.location
-		window.location.reload()	
+		if (nextProps.location.pathname !== this.props.location.pathname)
+			location.reload()	
 	}
 
 	render() {

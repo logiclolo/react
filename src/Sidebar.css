@@ -66,9 +66,6 @@ it becomes bold when hovering
 	text-decoration: none;
 }
 
-.sublist > div > a:hover {
-	font-weight: bold;
-}
 
 /********************************
 sidebar list
@@ -88,13 +85,20 @@ css sliding underline -- from left to right
 	transition: width .5s ease, background-color .5s ease;
 }
 
-.list > div > a:hover:after {
-	width: 100%;
-	background: black;
-}
 
 .list > .focused a:after {
 	width: 100%;
 	background: black;
 }
 
+@media only screen and (min-width: 768px)
+{
+	.sublist > div > a:hover {
+		font-weight: bold;
+	}
+
+	.list > div > a:hover:after {
+		width: 100%;
+		background: black;
+	}
+}
