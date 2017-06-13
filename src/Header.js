@@ -12,13 +12,6 @@ import {
 
 class MenuBar extends Component {
 
-	onClick() {
-		$('.main-portfolio').addClass('blurin')
-		$('.Sidebar').css('left', 0)
-		//document.getElementsByClassName('main-portfolio').classList.add('blurin')
-		
-	}
-
 	render() {
 		const logo = 'WALO' 
 		return(	
