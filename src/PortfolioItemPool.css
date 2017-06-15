@@ -270,23 +270,29 @@ div {
 }
 
 .previous-next {
-	margin-top: 20px;
+	margin-top: 100px;
+}
+
+.previous-next span {
+	font-family: AndaleMono, myAndaleMono;
+	color: #000;
+	font-size: 20px;
 }
 
 .previous-next div a{
 	display: inline-block;
 	font-family: AndaleMono, myAndaleMono;
-	font-size: 19px;
+	font-size: 14px;
+	color:#000;
+	margin-bottom:30px;
 }
 
 .previous-next .previous-p{
 	float: left;
-	margin-left: 20%;
 }
 
 .previous-next .next-p{
 	float: right;
-	margin-right: 20%;
 }
 
 .wrapper {

@@ -12,7 +12,7 @@ import {
 class Navigation extends Component {
 
 	reload() {
-		window.location.reload()	
+		setTimeout(function(){location.reload()}, 100)
 	}
 
 	render() {
@@ -28,10 +28,10 @@ class Navigation extends Component {
 		return(
 			<div>
 			<Link to={pre_path} onClick={()=>this.reload()} className='previous-p'>
-				<span>&larr;</span>previous
+				<span>&larr;</span>Previous
 			</Link>
 			<Link to={next_path} onClick={()=>this.reload()} className='next-p'>
-				next<span>&rarr;</span>
+				Next<span>&rarr;</span>
 			</Link>
 			</div>
 		)
