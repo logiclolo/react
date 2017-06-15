@@ -10,6 +10,8 @@
 
 	--main-height: calc(100vh - 2*var(--body-margin));
 	--main-width: calc(100vw - 2*var(--body-margin));
+
+	--header-width: 55px;
 }
 
 body {
@@ -65,6 +67,8 @@ div {
 	transition: all ease .3s;
 	-webkit-animation: blinkBackground 4s infinite;
 	animation: blinkBackground 4s infinite;
+	-webkit-box-shadow: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0)
 }
 
 .menu-wrapper {
@@ -75,7 +79,7 @@ div {
 
 .header {
 	display: none;
-	padding: 20px;
+	padding: 13px;
 }
 
 .logo {
@@ -83,11 +87,15 @@ div {
 	vertical-align: middle;
 	width: 1%;
 	font-size: 15px;
+	line-height: 1;
+	position: fixed;
+	top:3.5%;
+	left: 5%;
 }
 
 .logo img {
 
-	width: 80px;
+	width: 70px;
 }
 
 
@@ -96,6 +104,11 @@ div {
 	vertical-align: middle;
 	text-align: right;
 	position: relative;
+	line-height: 1.5;
+	position: fixed;
+	right: 5%;
+	top: 1%;
+	transition: all ease .3s;
 }
 
 .ham {
@@ -124,17 +137,35 @@ div {
 	top: -8px;
 }
 
-.exit {
-	position: absolute;
-	left: 75%;
-	top: 20%;	
-	z-index: 100;
-	-webkit-transform: rotate(45deg);
+a {
+	background-color: transparent;
 }
 
-.exit a{
+.exit {
+	position: absolute;
+	right: 5%;
+	top: 1%;	
+	z-index: 100;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+}
+
+.exit span{
 	color: #ffffff;
-	font-size: 25px;
+	font-size: 22px;
+
+}
+.exit .ham {
+	background-color: transparent !important;
+}
+
+.exit .ham:before {
+	transform: translateY(8px) rotateZ(-45deg);
+	background-color: #fff;
+}
+
+.exit .ham:after{
+	transform: translateY(-8px) rotateZ(45deg);
+	background-color: #fff;
 }
 
 .main-portfolio {
@@ -187,7 +218,7 @@ div {
 }
 
 .portfolio-description .headline span {
-	font-family: AndaleMono;
+	font-family: AndaleMono, myAndaleMono;
 	font-size: 36px;
 	letter-spacing: 0.08em;
 	text-align: left;
@@ -196,7 +227,7 @@ div {
 }
 
 .portfolio-description .sub-headline span {
-	font-family: AndaleMono;
+	font-family: AndaleMono, myAndaleMono;
 	font-size: 18px;
 	text-align: left;
 	color: #4a4a4a;
@@ -207,7 +238,7 @@ div {
 }
 
 .portfolio-description .preface span {
-	font-family: AndaleMono;
+	font-family: AndaleMono, myAndaleMono;
 	font-size: 14px;
 	line-height: 1.79;
 	letter-spacing: 0.08em;
@@ -392,7 +423,7 @@ div {
 
 .title h2{
 	position: relative;	
-	font-family: HanziPenSC-W5;
+	font-family: HanziPenSC-W3, myHanziPenSC;
 	font-size: 22px;
 	text-align: left;
 	color: black;
@@ -407,7 +438,7 @@ div {
 
 .subtitle h3{
 	position: relative;
-	font-family: AndaleMono;
+	font-family: AndaleMono, myAndaleMono;
 	font-size: 12px;
 	text-align: left;
 	color: #ffffff;
@@ -470,7 +501,7 @@ div {
 	:root {
 		--body-margin: 20px;
 		--sidebar-width: 0px;
-		--header-width: 90px;
+		--header-width: 55px;
 
 		--remainder-width: 20px;
 		--item-width: calc((100vw - var(--sidebar-width) - 2*var(--body-margin) - 3*var(--remainder-width))/2);
@@ -485,11 +516,14 @@ div {
 		position: fixed;
 		left: 0;
 		top: 0;
-		/*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+		box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.05);
 		z-index: 90;
 		opacity: 1;
 		background-color: white;
-		transition: all 1s ease-in-out;
+		line-height: 1.5;
+		height: var(--header-width);
+		width: 100vw;
+		/*transition: all 0.5s ease-in-out;*/
 	}
 
 	.container {
@@ -503,6 +537,7 @@ div {
 		width: 100%;
 		filter:blur(0px);
 		/*transition:all 2s;*/
+		margin-top: 80px;
 	}
 
 	.Sidebar .Author {
@@ -530,13 +565,14 @@ div {
 		justify-content: center;
 		align-items: center;
 		left: 0;
-		/*transition:all 2s;*/
+		top: 0;
 	}
+
 
 	.blurin {
 		/*animation: bluring 2s ;		*/
 		filter:blur(8px);
-		/*transition:all 2s;*/
+		/*transition: all 1s;*/
 	}
 
 	.list ul a{
@@ -563,7 +599,7 @@ div {
 	:root {
 		--body-margin: 20px;
 		--sidebar-width: 0px;
-		--header-width: 90px;
+		--header-width: 55px;
 
 		--remainder-width: 20px;
 		--item-width: calc((100vw - var(--sidebar-width) - 2*var(--body-margin) - 2*var(--remainder-width)));
@@ -586,6 +622,22 @@ div {
 		left: 0px;
 		right: 0px;
 		top: 0px;
+	}
+
+	.preface {
+		margin: 0;	
+	}
+
+	.portfolio-description .pic img {
+		width: 100%;
+	}
+	.desc {
+		margin: 0;
+		letter-spacing: 1px;
+	}
+
+	.portfolio-description .desc span {
+		letter-spacing: 0.05em;
 	}
 
 }

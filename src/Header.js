@@ -12,14 +12,17 @@ import {
 
 class MenuBar extends Component {
 
+	home() {
+		location.reload()	
+	}
 	render() {
 		const logo = 'WALO' 
 		return(	
 			<div className='menu-wrapper'>
-				<div className='logo'>
+				<a href='/' className='logo' onClick={()=>this.home()}>
 					<img src={logopic}/>
-				</div>
-				<div className='menu'>
+				</a>
+				<div className={this.props.menuClass}>
 					<a className='menu-bar' onClick={()=>this.props.onClick()}>		
 						<span className='ham'>
 						</span>
@@ -33,8 +36,8 @@ class MenuBar extends Component {
 class Header extends Component {
 	render() {
 		return(	
-			<div className='header'>		
-				<MenuBar onClick={()=>this.props.onClick()} />
+			<div className={this.props.headerClass}>		
+				<MenuBar menuClass={this.props.menuClass} onClick={()=>this.props.onClick()} />
 			</div>
 		)
 	}

@@ -229,15 +229,28 @@ render() {
 	});
 
 
-	const sidebar_class = (this.state.smalldevice_sidebar_show)? 'Sidebar show': 'Sidebar'
-	const main_portfolio_class= (this.state.smalldevice_sidebar_show)? 'main-portfolio blurin': 'main-portfolio'
-	const header_class = (this.state.smalldevice_sidebar_show)? 'blurin': ''
+	var sidebar_class = (this.state.smalldevice_sidebar_show)? 'Sidebar show': 'Sidebar'
+	var main_portfolio_class= (this.state.smalldevice_sidebar_show)? 'main-portfolio blurin': 'main-portfolio'
+	var header_class = (this.state.smalldevice_sidebar_show)? 'header blurin': 'header'
+	var menu_class = (this.state.smalldevice_sidebar_show)? 'menu exit': 'menu'
+
+	/*****
+	 
+	 Following will render three main areas
+	 1. Sidebar
+	 2. header (only in Pad of mobile)
+	 3. main portfolio
+
+	*****/
 
 	return (
 		<div className="myPortfolio">
 			<div className={sidebar_class}>
-				<div className='exit' onClick={()=>this.smalldevice_sidebar_exit()}>
-					<a>+</a>
+				<div className='menu exit'>
+				<a className='menu-bar' onClick={()=>this.smalldevice_sidebar_exit()}>		
+					<span className='ham'>
+					</span>
+				</a>
 				</div>
 				<div className="Author">
 					<img src={logopic}/>
@@ -248,8 +261,8 @@ render() {
 					</ul>
 				</div>
 			</div>
-			<div className={header_class}>
-				<Header onClick={()=>this.smalldevice_sidebar_show()}/>
+			<div className={'header-area'}>
+				<Header headerClass={header_class} menuClass={menu_class} onClick={()=>this.smalldevice_sidebar_show()}/>
 			</div>
 			<div className={main_portfolio_class}>
 				{sidebar_routes}
