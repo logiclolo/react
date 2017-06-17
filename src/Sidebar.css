@@ -4,6 +4,8 @@
 	top: calc(var(--body-margin));
 	width: 190px;
 	margin-left: 35px;
+	height: 80%;
+	overflow: scroll; 
 }
 
 .Author {
