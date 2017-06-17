@@ -268,7 +268,6 @@ a {
 }
 
 .portfolio-description .desc span {
-	/*font-family: AndaleMono;*/
 	font-family: AndaleMono, myAndaleMono;
 	font-size: 14px;
 	line-height: 1.79;
@@ -360,16 +359,25 @@ a {
 .post3 {
 	left: var(--remainder-width);
 	top: calc(var(--item-width) + var(--remainder-width));
+	top: calc((100vw - var(--sidebar-width) - 2*var(--body-margin) - 3*var(--remainder-width))/2 + var(--remainder-width));
 }
 
 .post4 {
 	right: var(--remainder-width);
 	top: calc(var(--item-width) + var(--remainder-width));
+	top: calc((100vw - var(--sidebar-width) - 2*var(--body-margin) - 3*var(--remainder-width))/2 + var(--remainder-width));
 }
 
 .post5 {
 	left: var(--remainder-width);
 	top: calc(2 * var(--item-width) + 2 * var(--remainder-width));
+	top: calc((100vw - var(--sidebar-width) - 2*var(--body-margin) - 3*var(--remainder-width)) + 2*var(--remainder-width));
+}
+
+.post6 {
+	right: var(--remainder-width);
+	top: calc(2 * var(--item-width) + 2 * var(--remainder-width));
+	top: calc((100vw - var(--sidebar-width) - 2*var(--body-margin) - 3*var(--remainder-width)) + 2*var(--remainder-width));
 }
 
 .item1 {
@@ -393,6 +401,11 @@ a {
 }
 
 .item5 {
+	background: url(./img/mainpage_5.jpg) no-repeat;
+	background-size: 100%;
+}
+
+.item6 {
 	background: url(./img/mainpage_5.jpg) no-repeat;
 	background-size: 100%;
 }
@@ -451,48 +464,44 @@ a {
 	visibility: hidden;
 }
 
+.hover-state:hover {
+	visibility: visible;
+	background-color: #eb6460;
+	opacity: 0.9;
+}
+.hover-state:hover  .info {
+	position: absolute;
+	left: 10%;
+	top: 65%;
+}
 
-@media only screen and (min-width: 768px)
-{
-	.hover-state:hover {
-		visibility: visible;
-		background-color: #eb6460;
-		opacity: 0.9;
-	}
-	.hover-state:hover  .info {
-		position: absolute;
-		left: 10%;
-		top: 65%;
-	}
+.hover-state:hover  .info .title h2 {
+	color: #ffffff;
+	
+}
 
-	.hover-state:hover  .info .title h2 {
-		color: #ffffff;
-		
-	}
+.hover-state:hover  .info .subtitle h3 {
+	color: #FFE5E5;
+	display: block;
+}
+.hover-state:hover .title h2 {
+	-webkit-transform: translate(0,-100px);
+	transform: translate(0,-15px);
+	-webkit-transition:all .4s cubic-bezier(.455,.03,.515,.955);
+	transition:all .4s cubic-bezier(.455,.03,.515,.955);
+	letter-spacing: 0.05em;
+	visibility: visible;
 
-	.hover-state:hover  .info .subtitle h3 {
-		color: #FFE5E5;
-		display: block;
-	}
-	.hover-state:hover .title h2 {
-		-webkit-transform: translate(0,-100px);
-		transform: translate(0,-15px);
-		-webkit-transition:all .4s cubic-bezier(.455,.03,.515,.955);
-		transition:all .4s cubic-bezier(.455,.03,.515,.955);
-		letter-spacing: 0.05em;
-		visibility: visible;
+}
+.hover-state:hover .subtitle h3 {
+	-webkit-transform: translate(0,-100px);
+	transform: translate(0,-15px);
+	-webkit-transition:all .6s cubic-bezier(.455,.03,.515,.955);
+	transition:all .6s cubic-bezier(.455,.03,.515,.955);
+	letter-spacing: 0.05em;
+	visibility: visible;
+	
 
-	}
-	.hover-state:hover .subtitle h3 {
-		-webkit-transform: translate(0,-100px);
-		transform: translate(0,-15px);
-		-webkit-transition:all .6s cubic-bezier(.455,.03,.515,.955);
-		transition:all .6s cubic-bezier(.455,.03,.515,.955);
-		letter-spacing: 0.05em;
-		visibility: visible;
-		
-
-	}
 }
 
 @media only screen and (max-width: 768px)
@@ -580,19 +589,22 @@ a {
 		color: #ffffff;
 	}
 
-	/*@keyframes bluring{*/
-	/*0% {filter:blur(0px)}*/
-	/*100% {filter:blur(50px)}*/
-	/*}*/
+	.preface {
+		margin: 0;	
+	}
 
+	.portfolio-description .pic img {
+		width: 100%;
+	}
+	.desc {
+		margin: 0;
+		letter-spacing: 1px;
+	}
 
+	.portfolio-description .desc span {
+		letter-spacing: 0.05em;
+	}
 
-	/*.portfolio-item {*/
-		/*width: var(--item-width);*/
-		/*height: var(--item-width);*/
-		/*transition: all 1s ease-in-out;*/
-		
-	/*}*/
 }
 
 @media only screen and (max-width: 480px)
@@ -642,26 +654,4 @@ a {
 	}
 
 }
-/*
-@media only screen and (min-width: 768px)
-{
-	.container{
-		width: 750px;
-	}
-}
-
-@media only screen and (min-width: 992px)
-{
-	.container{
-		width: 970px;
-	}
-}
-
-@media only screen and (min-width: 1200px)
-{
-	.container{
-		width: 1170px;
-	}
-}
-*/
 

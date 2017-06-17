@@ -23,11 +23,33 @@ class PortfolioItem extends Component {
 		const html_class_info = 'info';
 		const html_class_title = 'title';
 		const html_class_subtitle = 'subtitle';
-		const name = html_class + this.props.post + ' ' + this.props.item
+		const name = html_class + this.props.post + ' ' + this.props.item;
+
+		/****
+		 This modification is for mobile/pad hover effect
+
+		 if desktop browser
+		 path of Link should be normal url
+
+		 if pad/mobile
+		 if the Link is not the last one being clicked, the path of Link should be null in order to allow hover effect
+		 ****/
+
+		var path;
+		if (window.innerWidth > 768){
+			path = this.props.path	
+		}
+		else {
+			if (this.props.lastClick !== name){
+				path=''
+			}
+			else {
+				path = this.props.path
+			}
+		}
 
 		return(	
-			//<Link to={this.props.path} target='_blank'>
-			<Link to={this.props.path}>
+			<Link to={path} ref={(thisClick) => {this.click = thisClick}} onClick={()=>this.props.onClick(this.click)} >
 				<div className={name}>		
 					<div className={html_class_hover}>
 						<div className={html_class_info}>
@@ -79,6 +101,20 @@ class Header extends Component {
 
 class Container extends Component {
 
+	constructor() {
+		super();
+		this.state = {
+			lastClick: null,
+		};
+	}
+
+	onClick(click) {
+		var cur = ReactDOM.findDOMNode(click).childNodes[0].className
+		if (this.state.lastClick !== cur){
+			this.setState({lastClick: cur})	
+		}
+	}
+
 	render() {
 		
 		const key = (location.pathname.split('/')[1] === '')? 'all':location.pathname.split('/')[1] 
@@ -89,6 +125,8 @@ class Container extends Component {
 				i = parseInt(i)
 				return(
 				<PortfolioItem post={'post'+ (index+1) } 
+						lastClick={this.state.lastClick}
+						onClick={(click)=>this.onClick(click)}
 						item={cat}
 						path={'/'+key+'/'+cat} 
 						title={this.props.title.title[i-1]} 
@@ -130,6 +168,13 @@ class PortfolioItemPool extends Component {
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.location.pathname !== this.props.location.pathname)
 			location.reload()	
+	}
+
+	componentDidMount() {
+		//default of scollrestoration is auto
+		window.history.scollRestoration = 'manual'
+		document.body.scrollTop = 0
+		window.scrollTo(0, 0);
 	}
 
 	render() {
