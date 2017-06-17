@@ -17,20 +17,11 @@ import w2pic_3 from './img/w2pic_3.jpg';
 
 class PortfolioItemPool2 extends Component {
 
-	constructor() {
-		super();
-		this.state = {
-			reload: true,
-		};
-	}
-
 	componentDidMount() {
-		this.setState({
-			reload: false,
-		},
-			function() {
-			}	
-		);
+		//default of scollrestoration is auto
+		window.history.scollRestoration = 'manual'
+		document.body.scrollTop = 0
+		window.scrollTo(0, 0);
 	}
 
 	render() {

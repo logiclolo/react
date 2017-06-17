@@ -20,20 +20,11 @@ import w1pic_7 from './img/w1pic_7.jpg';
 
 class PortfolioItemPool1 extends Component {
 
-	constructor() {
-		super();
-		this.state = {
-			reload: true,
-		};
-	}
-
 	componentDidMount() {
-		this.setState({
-			reload: false,
-		},
-			function() {
-			}	
-		);
+		//default of scollrestoration is auto
+		window.history.scollRestoration = 'manual'
+		document.body.scrollTop = 0
+		window.scrollTo(0, 0);
 	}
 
 	render() {
