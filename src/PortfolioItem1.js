@@ -9,6 +9,7 @@ import {
 	Link
 } from 'react-router-dom';
 import Navigation from './Navigation';
+import Characterize from './characterize';
 
 import mainpic from './img/w1pic_1.gif';
 import w1pic_2 from './img/w1pic_2.jpg';
@@ -31,7 +32,7 @@ class PortfolioItemPool1 extends Component {
 		const headline = 'How Good Is Your English'
 		const sub_headline = 'English Level Test App' 
 		const main_pic = {mainpic} 
-		const preface = 'English Level Test, an app for you to evaluate your vocabulary and grammar Level. It’s a quick test and just take you less than three minutes. After completing the Test, not only you can recieve the result report immediately, but also can get an free online English session that match your level. '
+		var preface = 'English Level Test, an app for you to evaluate your vocabulary and grammar Level. It’s a quick test and just take you less than three minutes. After completing the Test, not only you can recieve the result report immediately, but also can get an free online English session that match your level. '
 
 		
 
@@ -43,7 +44,7 @@ class PortfolioItemPool1 extends Component {
 		 4. subdesc 
 		 5. pic
 		 ********/
-		const contents = [
+		var contents = [
 			{
 				title: 'Background',
 				desc: "iTutorGroup, a \bleading online\b education platform, announced a strategic partnership with ASUS to deliver a service for user to learn English using ASUS tablets, anytime, anywhere, 24-7. What’s more, iTutorGroup also collaborate with IDEO to create a brand-new service.The English Level Test App is part of this iTutorGroup x ASUS x IDEO project, aiming to attract customer to experience iTutorGroup x ASUS’s services during Double 12 shopping festival in China.\n\n Within two weeks of time frame, we turned the concept into prototype, and then development finally."
@@ -87,6 +88,9 @@ class PortfolioItemPool1 extends Component {
 				
 		]
 
+
+		preface = Characterize(preface);  
+
 		const check = (content) => {
 			if ('url' in content) {
 				return(
@@ -120,82 +124,12 @@ class PortfolioItemPool1 extends Component {
 					else {
 						return (
 							<div className={key}>
-								{content[key].split("\n").map(i => {
-									var temp = i.split("\b").map((j, index) =>{
-										if ((index % 2) === 0){
-											return <span>{j}</span>;
-										}
-										else {
-											return <span className='thick'>{j}</span>;
-										}
-									})
-									return <div><span>{temp}</span></div>;
-								})}
+								{Characterize(content[key])}
 							</div>
 								
 						)
 					}
 				})
-		})
-
-		const group = contents.map((content, index)=>{
-			var desc; 
-			var subtitle;
-			var subdesc;
-			var pic; 
-
-			if ('desc' in content){
-				desc = (
-						<div className='desc'>
-							{content.desc.split("\n").map(i => {
-							    return <div><span>{i}</span></div>;
-							})}
-							<span>
-								{check(content)}
-							</span>
-						</div>
-				)
-			}
-
-
-			if ('subtitle' in content){
-				subtitle = (
-					<div className='subtitle'>
-						<span>{content.subtitle}</span>		
-					</div>
-			       )
-			}
-
-			if ('subdesc' in content){
-				subdesc = (
-						<div className='subdesc'>
-							{content.subdesc.split("\n").map(i => {
-							    return <div><span>{i}</span></div>;
-							})}
-							<span>
-								{check(content)}
-							</span>
-						</div>
-				)
-			}
-			
-			if ('pic' in content){
-				pic = content.pic.map(p=>{
-					return <div className='pic'><img src={p[Object.keys(p)[0]]}/></div>
-				})
-			}
-
-			return (
-				<div>
-					<div className='title'>
-						<span>{content.title}</span>		
-					</div>
-					{desc}
-					{subtitle}
-					{subdesc}
-					{pic}
-				</div>
-			)
 		})
 
 		return (
