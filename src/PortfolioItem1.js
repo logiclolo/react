@@ -91,16 +91,6 @@ class PortfolioItemPool1 extends Component {
 
 		preface = Characterize(preface);  
 
-		const check = (content) => {
-			if ('url' in content) {
-				return(
-					<Link to={content.url} target='_blank'>
-						Launch Site
-					</Link>
-				)
-			}
-		}
-
 		const display = contents.map((content, index) => {
 				return Object.keys(content).map(function(key){
 
@@ -114,7 +104,7 @@ class PortfolioItemPool1 extends Component {
 					}
 					else if (key === 'url'){
 						return(
-							<div className="desc">
+							<div className="external-link">
 							<Link to={content.url} target='_blank'>
 								Launch Site
 							</Link>
