@@ -9,11 +9,14 @@ import {
 	Link
 } from 'react-router-dom';
 import Navigation from './Navigation';
+import Characterize from './characterize';
 
 import mainpic from './img/w2pic_1.gif';
-import w2pic_2 from './img/w2pic_2.gif';
-import w2pic_3 from './img/w2pic_3.jpg';
-
+import w2pic_2 from './img/w2pic_2.jpg';
+import w2pic_3 from './img/w2pic_3.gif';
+import w2pic_4 from './img/w2pic_4.gif';
+import w2pic_5 from './img/w2pic_5.gif';
+import w2pic_6 from './img/w2pic_6.jpg';
 
 class PortfolioItemPool2 extends Component {
 
@@ -28,28 +31,52 @@ class PortfolioItemPool2 extends Component {
 		const headline = 'Best Friend for Learing'
 		const sub_headline = 'English Bot& Math Bot' 
 		const main_pic = {mainpic} 
-		const preface = 'EnglishBot: A Bot that can teach children English conversations as a friend.\nMathBot: A bot that can organize math problems and help teenagers to practice it in a more friendly way.'
-		const contents = [
+		var preface = ' \bEnglishBot\b: A bot that can teach children English conversations as a friend.\n\bMathBot\b: A bot that can organize math problems and help teenagers to practice it in a more friendly way.'
+
+		
+
+		/********
+		 contents has the following keys:
+		 1. title
+		 2. desc
+		 3. subtitle
+		 4. subdesc 
+		 5. pic
+		 ********/
+		var contents = [
 			{
 				title: 'Background',
-				desc: "Foxccon is looking for partnership and  application for its robot. Therefore we proposed a few scenarios about how human being might interact with robot when it comes to learning."
+				desc: "Foxccon is looking for partnership and  application for its robot. Therefore we proposed a few scenarios about how human being might interact with robot when it comes to learning.",
+
+			},
+
+			{
+				title: 'User Flow',
+				pic: [{w2pic_2}]
 			},
 
 			{
 				title: 'EnglishBot',			 
-				pic: [{w2pic_2}]
+				subtitle:'GETTING INTO KNOW EACH OTHERS',
+				pic: [{w2pic_3}]
 			
 			},
+
+			{	
+				subtitle:'CHATTING WITH KIDS',
+				pic: [{w2pic_4}]
 			
+			},
+
 			{
 				title: 'MathBot',			 
-				pic: [{w2pic_3}]
+				pic: [{w2pic_6}]
 
 			},
 
 			{
 				title: 'Role',
-				desc: 'Concept Design\nIllustration\nPrototyping'
+				desc: 'Concept Design\nIllustration\nPrototyping',
 			},
 
 			{
@@ -61,77 +88,39 @@ class PortfolioItemPool2 extends Component {
 
 				
 		]
-		const check = (content) => {
-			if ('url' in content) {
-				return(
-					<Link to={content.url} target='_blank'>
-						Prototype
-					</Link>
-				)
-			}
-		}
 
-		const group = contents.map((content, index)=>{
-			var desc; 
-			var subtitle;
-			var subdesc;
-			var pic; 
+		preface = Characterize(preface);  
 
-			if ('desc' in content){
-				desc = (
-						<div className='desc'>
-							{content.desc.split("\n").map(i => {
-							    return <div><span>{i}</span></div>;
-							})}
-							<span>
-								{check(content)}
-							</span>
-						</div>
-				)
-			}
+		const display = contents.map((content, index) => {
+				return Object.keys(content).map(function(key){
 
+					if (key === 'pic') {
+						var pic;
+						pic = content.pic.map(p=>{
+							return <div className='pic'><img src={p[Object.keys(p)[0]]}/></div>
+						})
 
-			if ('subtitle' in content){
-				subtitle = (
-					<div className='subtitle'>
-						<span>{content.subtitle}</span>		
-					</div>
-			       )
-			}
-
-			if ('subdesc' in content){
-				subdesc = (
-						<div className='subdesc'>
-							{content.subdesc.split("\n").map(i => {
-							    return <div><span>{i}</span></div>;
-							})}
-							<span>
-								{check(content)}
-							</span>
-						</div>
-				)
-			}
-			
-			if ('pic' in content){
-				pic = content.pic.map(p=>{
-					return <div className='pic'><img src={p[Object.keys(p)[0]]}/></div>
+						return pic
+					}
+					else if (key === 'url'){
+						return(
+							<div className="external-link">
+							<Link to={content.url} target='_blank'>
+								MathBot Prototype
+							</Link>
+							</div>
+						)
+					}
+					else {
+						return (
+							<div className={key}>
+								{Characterize(content[key])}
+							</div>
+								
+						)
+					}
 				})
-			}
-
-			return (
-				<div>
-					<div className='title'>
-						<span>{content.title}</span>		
-					</div>
-					{desc}
-					{subtitle}
-					{subdesc}
-					{pic}
-				</div>
-			)
 		})
-
-
 
 		return (
 			<Router>
@@ -150,7 +139,7 @@ class PortfolioItemPool2 extends Component {
 					<span>{preface}</span>
 				</div>
 				<div className='content'>
-					{group}			
+					{display}			
 				</div>
 			</div>
 			<div className='previous-next'>

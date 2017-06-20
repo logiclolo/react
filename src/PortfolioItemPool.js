@@ -13,6 +13,9 @@ import {
 import Portfolioitem1 from './PortfolioItem1';
 import Portfolioitem2 from './PortfolioItem2';
 import Portfolioitem3 from './PortfolioItem3';
+import Portfolioitem4 from './PortfolioItem4';
+import Portfolioitem5 from './PortfolioItem5';
+import Portfolioitem6 from './PortfolioItem6';
 import Quiz from './Quiz';
 
 class PortfolioItem extends Component {
@@ -191,8 +194,8 @@ class Footer extends Component {
 class PortfolioItemPool extends Component {
 
 	componentWillReceiveProps(nextProps) {
-		if (nextProps.location.pathname !== this.props.location.pathname)
-			location.reload()	
+		//if (nextProps.location.pathname !== this.props.location.pathname)
+			//location.reload()	
 	}
 
 	componentDidMount() {
@@ -204,28 +207,31 @@ class PortfolioItemPool extends Component {
 
 	render() {
 		const category = {
-			all: ['item1', 'item2', 'item3', 'item4', 'item5'],
+			all: ['item1', 'item2', 'item3', 'item4', 'item5','item6'],
 			design: ['item1', 'item2', 'item3', 'item4'],
-			research: ['item1', 'item3', 'item4'],
-			illustration: ['item5'],
+			research: ['item1', 'item3', 'item4', 'item5'],
+			illustration: ['item6'],
 		} 
 
 		const matching = {
 			item1: Portfolioitem1,
 			item2: Portfolioitem2,
 			item3: Portfolioitem3,
-			item4: Portfolioitem1,
-			item5: Portfolioitem1,
+			item4: Portfolioitem4,
+			item5: Portfolioitem5,
+			item6: Portfolioitem6,
+
 		}
 
 		const title = {
 			title:['How Good Is Your English?',
 				'Best Friend For Learing',
-				'Rebiult Service For Both External and Internal Systems',
+				'Redesign Both Internal Systems And External Services',
 				'Keep Track Of Kid\'s Learning?',
-				'Creatures in the Fantasy?'],	
+				'Effects Of Trust & Safety On Mobile Payment Decisions',
+				'Creatures in the Forest'],	
 
-			subtitle:['UI/UX Design','Bot Design','WEB Design  / UX Research','App Design / UX Research','Art'],
+			subtitle:['App Design','Bot Design','WEB Design  / UX Research','App Design / UX Research','UX Research','Art'],
 		}
 
 		const quiz = () => { 
@@ -240,13 +246,6 @@ class PortfolioItemPool extends Component {
 					<Wrapper category={category} title={title} />
 					<Footer/>
 				</div>
-			)
-		}
-
-		const WrapperRoute = (Component, path, category, index ) => { 
-			const a=1;	
-			return(
-				<Route exact path={path} render={()=> (<Component path={path} category={category} index={index}/>)} />
 			)
 		}
 

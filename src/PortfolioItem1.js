@@ -29,10 +29,10 @@ class PortfolioItemPool1 extends Component {
 	}
 
 	render() {
-		const headline = 'How Good Is Your English'
+		const headline = 'How Good Is Your English?'
 		const sub_headline = 'English Level Test App' 
 		const main_pic = {mainpic} 
-		var preface = 'English Level Test, an app for you to evaluate your vocabulary and grammar Level. It’s a quick test and just take you less than three minutes. After completing the Test, not only you can recieve the result report immediately, but also can get an free online English session that match your level. '
+		var preface = '\bEnglish Level Test\b, an app for you to evaluate your vocabulary and grammar Level. It’s a quick test and just take you less than three minutes. After completing the Test, not only you can recieve the result report immediately, but also can get an free online English session that match your level. '
 
 		
 
@@ -47,7 +47,7 @@ class PortfolioItemPool1 extends Component {
 		var contents = [
 			{
 				title: 'Background',
-				desc: "iTutorGroup, a \bleading online\b education platform, announced a strategic partnership with ASUS to deliver a service for user to learn English using ASUS tablets, anytime, anywhere, 24-7. What’s more, iTutorGroup also collaborate with IDEO to create a brand-new service.The English Level Test App is part of this iTutorGroup x ASUS x IDEO project, aiming to attract customer to experience iTutorGroup x ASUS’s services during Double 12 shopping festival in China.\n\n Within two weeks of time frame, we turned the concept into prototype, and then development finally."
+				desc: "iTutorGroup, a leading online education platform, announced a strategic partnership with ASUS to deliver a service for user to learn English using ASUS tablets, anytime, anywhere, 24-7. What’s more, iTutorGroup also collaborate with IDEO to create a brand-new service.The English Level Test App is part of this iTutorGroup x ASUS x IDEO project, aiming to attract customer to experience iTutorGroup x ASUS’s services during Double 12 shopping festival in China.\n\n Within two weeks of time frame, we turned the concept into prototype, and then development finally.",
 			},
 
 			{
