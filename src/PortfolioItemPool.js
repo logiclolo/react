@@ -32,24 +32,11 @@ class PortfolioItem extends Component {
 		 path of Link should be normal url
 
 		 if pad/mobile
-		 if the Link is not the last one being clicked, the path of Link should be null in order to allow hover effect
+		 if the Link is not the last one being clicked, then generate div instead of link
 		 ****/
 
-		var path;
-		if (window.innerWidth > 768){
-			path = this.props.path	
-		}
-		else {
-			if (this.props.lastClick !== name){
-				path=''
-			}
-			else {
-				path = this.props.path
-			}
-		}
-
-		return(	
-			<Link to={path} ref={(thisClick) => {this.click = thisClick}} onClick={()=>this.props.onClick(this.click)} >
+		const link = () => (
+			<Link to={this.props.path} ref={(thisClick) => {this.click = thisClick}} onClick={()=>this.props.onClick(this.click)} >
 				<div className={name}>		
 					<div className={html_class_hover}>
 						<div className={html_class_info}>
@@ -64,6 +51,44 @@ class PortfolioItem extends Component {
 				</div>
 			</Link>
 		)
+
+
+		const div = () => (
+			<div ref={(thisClick) => {this.click = thisClick}} onClick={()=>this.props.onClick(this.click)} >
+				<div className={name}>		
+					<div className={html_class_hover}>
+						<div className={html_class_info}>
+							<div className={html_class_title}>
+								<h2>{this.props.title}</h2>
+							</div>
+							<div className={html_class_subtitle}>
+								<h3>{this.props.subtitle}</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		)
+	
+
+		var path;
+		if (window.innerWidth > 768){
+			return( 
+				link()
+			)
+		}
+		else {
+			if (this.props.lastClick !== name){
+				return (
+					div()
+				)
+			}
+			else {
+				return( 
+					link()
+				)
+			}
+		}
 	}
 }
 
