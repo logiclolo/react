@@ -34,6 +34,7 @@ class MyEmail extends Component {
 	render() {
 
 		return (
+			<div>
 			<div className="message-me-email">
 				<span>
 					Here is my Email:
@@ -44,12 +45,43 @@ class MyEmail extends Component {
 				>
 				</a>
 			</div>
+			<div className="message-me-email message-me-final">
+				<span>
+					Thank you !	
+				</span>
+			</div>
+			</div>
 		)
 	}
 
 }
 
 class Answer extends Component {
+
+	constructor() {
+		super();
+		this.state = {
+			autofocus: false,
+		};
+	}
+
+	componentDidUpdate(){
+		/*
+		if (this.input != null)
+			this.input.focus();
+		*/
+		/*
+		if (this.props.autofocus && !this.state.autofocus && window.innerWidth <= 768){
+			this.setState({autofocus: true}, function(){
+				this.input.value = 'Type here ~'
+			})
+		}
+		*/
+	}
+
+	componentDidMount() {
+		//this.input.value = 'logic'
+	}
 
 	render() {
 		const group = this.props.text.map((select, index) => {
@@ -75,7 +107,7 @@ class Answer extends Component {
 			}
 			else {
 				return (
-					<div className="message-me-email">
+					<div>
 						<MyEmail onSend={(param) => this.props.onSend(param)}/>
 					</div>
 				);
@@ -99,57 +131,6 @@ class Answer extends Component {
 
 }
 
-const TxtType = function(el, toRotate, period) {
-        this.toRotate = toRotate;
-        this.el = el;
-        this.loopNum = 0;
-        this.period = parseInt(period, 10) || 2000;
-        this.txt = '';
-        this.tick();
-        this.isDeleting = false;
-};
-
-TxtType.prototype.tick = function() {
-        var i = this.loopNum % this.toRotate.length;
-        //var fullTxt = this.toRotate[i];
-        var fullTxt = this.toRotate;
-
-        if (this.isDeleting) {
-		this.txt = fullTxt.substring(0, this.txt.length - 1);
-        } else {
-		this.txt = fullTxt.substring(0, this.txt.length + 1);
-        }
-
-        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
-
-        var that = this;
-        //var delta = 200 - Math.random() * 100;
-        var delta = 50;
-
-        if (this.isDeleting) { delta /= 2; }
-
-	if (this.txt != fullTxt) {
-		setTimeout(function() {
-			that.tick();
-		}, delta);
-	}
-
-	/*
-        if (!this.isDeleting && this.txt === fullTxt) {
-		delta = this.period;
-		this.isDeleting = true;
-        } else if (this.isDeleting && this.txt === '') {
-		this.isDeleting = false;
-		this.loopNum++;
-		delta = 500;
-        }
-
-        setTimeout(function() {
-		that.tick();
-        }, delta);
-	*/
-};
-
 class MessageMe extends Component {
 
 	constructor() {
@@ -160,8 +141,8 @@ class MessageMe extends Component {
 			text: '',
 			idx: '',
 			ans: [
-				["just a passerby", "a friend", "your future employer"],	
-				["let's make friend!", "I want to offer you an interview opportunity"],	
+				["Just a passerby", "A friend", "Your future employer"],	
+				["let's make friend!", "You just got an interview"],	
 				[""],	
 				[""],	
 			],
@@ -180,8 +161,63 @@ class MessageMe extends Component {
 			name: '',
 			problem: '',
 			email: '',
+			isTypeWriterDone: false,
 		};
 	
+	}
+
+	txtTyper(el, toRotate, period) {
+		this.toRotate = toRotate;
+		this.el = el;
+		this.loopNum = 0;
+		this.period = parseInt(period, 10) || 2000;
+		this.txt = '';
+		this.isDeleting = false;
+		this.tick = () => {
+			var i = this.loopNum % this.toRotate.length;
+			//var fullTxt = this.toRotate[i];
+			var fullTxt = this.toRotate;
+
+			if (this.isDeleting) {
+				this.txt = fullTxt.substring(0, this.txt.length - 1);
+			} else {
+				this.txt = fullTxt.substring(0, this.txt.length + 1);
+			}
+
+			this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+			var that = this;
+			//var delta = 200 - Math.random() * 100;
+			var delta = 50;
+
+			if (this.isDeleting) { delta /= 2; }
+
+			if (this.txt != fullTxt) {
+				setTimeout(function() {
+					that.tick();
+				}, delta);
+			}
+			else {
+				this.setState({isTypeWriterDone: true})	
+				$("input[type='text']").focus();
+			}
+		}
+		/*
+		if (!this.isDeleting && this.txt === fullTxt) {
+			delta = this.period;
+			this.isDeleting = true;
+		} else if (this.isDeleting && this.txt === '') {
+			this.isDeleting = false;
+			this.loopNum++;
+			delta = 500;
+		}
+
+		setTimeout(function() {
+			that.tick();
+		}, delta);
+		*/
+
+		this.tick();
 	}
 
 	setupHandler() {
@@ -199,7 +235,7 @@ class MessageMe extends Component {
 					);
 				}
 
-		$("input[type='text']").focus();
+		//$("input[type='text']").focus();
 		$("input[type='text']").on("keyup", function(){
 			if(this.value!=""){
 				$(".message-me-ans a").css('visibility', 'visible'); 
@@ -215,10 +251,10 @@ class MessageMe extends Component {
 
 	componentDidMount() {
 		this.setupHandler();
+		window.history.scollRestoration = 'manual'
+		document.body.scrollTop = 0
+		window.scrollTo(0, 0);
 
-	}
-
-	componentDidUpdate() {
 	}
 
 	composePostData(data) {
@@ -291,6 +327,9 @@ class MessageMe extends Component {
 	}
 
 	onSend(param) {
+		$('.message-me-email').slideUp();
+		$('.message-me-final').slideDown();
+
 		this.setState({
 			num:  this.state.num + 1,
 		},
@@ -363,7 +402,8 @@ class MessageMe extends Component {
 		    var period = elements[i].getAttribute('data-period');
 		    if (toRotate) {
 		      //new TxtType(elements[i], JSON.parse(toRotate), period);
-		      new TxtType(elements[i], toRotate, period);
+		      //new this.txtTyper(elements[i], toRotate, period);
+		      this.txtTyper(elements[i], toRotate, period);
 		    }
 		}
 		// INJECT CSS
@@ -379,7 +419,8 @@ class MessageMe extends Component {
 			<div className="message-me">
 				<Question text={this.state.ques[this.state.num]} />
 				<Answer onClick={()=>this.handleClick()} onSelect={(param)=>this.handleSelect(param)} 
-				        onSend={(param)=>this.onSend(param)} text={this.state.ans[this.state.num]} />
+				        onSend={(param)=>this.onSend(param)} text={this.state.ans[this.state.num]} 
+					autofocus={this.state.isTypeWriterDone}/>
 			</div>
 		)	
 	}

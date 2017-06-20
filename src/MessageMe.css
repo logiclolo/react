@@ -14,32 +14,34 @@
 
 .message-me input, .message-me span {
 	color: #000000;
+	font-family: AndaleMono, myAndaleMono;
 }
 
 .message-me-ques span {
-	font-family: HanziPenSC-W3;
+	font-family: HanziPenSC,myHanziPenSC;
 }
 
 .message-me-select span {
 	color: #4a4a4a;
+	font-family: AndaleMono, myAndaleMono;
 }
 
 .message-me-ques {
 	background-color: #f5e9e9;
 	position: relative;
 	width: 100%;
-	height: 50%;
-	padding: 10px;
-	font-size: 18px;
+	height: 40%;
+	padding: 40px;
+	font-size: 36px;
 }
 
 .message-me-ans {
 	background-color: #f8f8f8;
 	position: relative;
 	width: 100%;
-	height: 50%;
-	padding: 10px;
-	font-size: 15px;
+	height: 60%;
+	padding: 40px;
+	font-size: 14px;
 }
 
 .message-me-ans input {
@@ -48,10 +50,13 @@
 	background-color: #f8f8f8;
 	line-height: 18px;
 	font-size: 18px;
+	width: 50%;
+	
 }
 
 .message-me-ans input:focus {
 	outline: none;
+	width: 50%
 }
 
 .message-me-ans a {
@@ -62,7 +67,7 @@
 }
 
 .message-me-select span {
-	margin: 15px;
+	margin-top: 15px;
 	display: block;
 }
 
@@ -77,4 +82,46 @@
 
 .message-me-email input{
 	margin-left: 6px;
+}
+
+.message-me-final {
+	display: none;
+}
+
+@media only screen and (max-width: 480px)
+{
+	.message-me-ques {
+
+		padding: 25px;	
+	}
+
+	.message-me-ans {
+
+		padding: 25px;
+		
+	}
+
+	.message-me-ans a {
+		font-size: 24px;
+	}
+	.message-me-ans input {
+
+		width: 90%;
+		
+	}
+
+	.message-me-ans input:focus {
+
+		width: 90%
+	}
+
+	.visible {
+		font-size: 20px;
+	}
+
+	body{
+		padding: 0px;
+	}
+
+
 }
