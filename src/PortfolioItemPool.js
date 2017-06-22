@@ -194,7 +194,7 @@ class Footer extends Component {
 class PortfolioItemPool extends Component {
 
 	componentWillReceiveProps(nextProps) {
-		//if (nextProps.location.pathname !== this.props.location.pathname)
+		//if (nextProps.location.pathname !== history.location.pathname)
 			//location.reload()	
 	}
 

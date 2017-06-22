@@ -205,7 +205,6 @@ class PortfolioItemPool3 extends Component {
 		})
 
 		return (
-			<Router>
 			<div>
 			<div className='portfolio-description'>
 				<div className='headline'>
@@ -228,7 +227,6 @@ class PortfolioItemPool3 extends Component {
 				<Navigation index={this.props.index} category={this.props.category} c_key={this.props.c_key}/>
 			</div>
 			</div>
-			</Router>
 	       )
 	}
 }
