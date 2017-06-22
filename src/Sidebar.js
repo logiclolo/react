@@ -256,7 +256,9 @@ render() {
 				</a>
 				</div>
 				<div className="Author">
-					<img src={logopic}/>
+					<Link to='/'>
+						<img src={logopic}/>
+					</Link>
 				</div>
 				<div className="list">
 					<ul>
