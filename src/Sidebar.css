@@ -5,7 +5,7 @@
 	width: 190px;
 	margin-left: 35px;
 	height: 80%;
-	overflow: scroll; 
+	/*overflow: scroll; */
 }
 
 .Author {
@@ -38,7 +38,7 @@
 }
 
 .list ul a{
-	font-family: AndaleMono;
+	font-family: AndaleMono, myAndaleMono;
 	color: #000000;
 }
 
@@ -61,11 +61,13 @@ it becomes bold when hovering
 .sublist .focused a{
 	font-weight: bold;
 	text-decoration: none;
+	font-size: 14px;
 }
 
 .sublist .unfocused a{
 	font-weight: normal;
 	text-decoration: none;
+	font-size: 14px;
 }
 
 
@@ -90,7 +92,8 @@ css sliding underline -- from left to right
 
 .list > .focused a:after {
 	width: 100%;
-	background: black;
+	/*background: black;*/
+	background: #FFFFFF;
 }
 
 @media only screen and (min-width: 768px)
@@ -102,5 +105,12 @@ css sliding underline -- from left to right
 	.list > div > a:hover:after {
 		width: 100%;
 		background: black;
+	}
+	.sublist .focused a{
+		font-size: 12px;
+	}
+
+	.sublist .unfocused a{
+		font-size: 12px;
 	}
 }

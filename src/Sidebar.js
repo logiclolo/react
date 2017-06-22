@@ -14,6 +14,7 @@ import Header from './Header';
 import logopic from './img/logo.jpg';
 import Quiz from './Quiz';
 import MessageMe from './MessageMe';
+import About from './About';
 import $ from 'jquery';
 import portfolioitem1 from './PortfolioItem1.js';
 import User from './components/User';
@@ -141,6 +142,8 @@ render() {
 		{
 			path: '/about',
 			name: 'ABOUT',
+			exact: true,
+			component: About,
 		},
 		{
 			path: '/messageme',
