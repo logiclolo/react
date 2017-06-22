@@ -263,7 +263,6 @@ class PortfolioItemPool extends Component {
 
 		return(
 			<div>
-			<Router>
 			<Switch>
 				<Route exact path='/' component={portfolioPool} />
 				<Route exact path='/all' component={portfolioPool} />
@@ -273,7 +272,6 @@ class PortfolioItemPool extends Component {
 				<Route path='/quiz' component={quiz} />
 				{portfolio_routes}
 			</Switch>
-			</Router>
 			</div>
 		) 	
 	}
