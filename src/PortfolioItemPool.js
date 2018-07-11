@@ -145,7 +145,7 @@ class Container extends Component {
 
 	render() {
 		
-		const key = (location.pathname.split('/')[1] === '')? 'all':location.pathname.split('/')[1] 
+		const key = (window.location.pathname.split('/')[1] === '')? 'all':window.location.pathname.split('/')[1] 
 		const category = this.props.category[key]
 
 		const content = category.map((cat, index)=>{
@@ -214,9 +214,9 @@ class PortfolioItemPool extends Component {
 		} 
 
 		const matching = {
-			item1: Portfolioitem1,
+			item1: Portfolioitem3,
 			item2: Portfolioitem2,
-			item3: Portfolioitem3,
+			item3: Portfolioitem1,
 			item4: Portfolioitem4,
 			item5: Portfolioitem5,
 			item6: Portfolioitem6,
@@ -224,14 +224,14 @@ class PortfolioItemPool extends Component {
 		}
 
 		const title = {
-			title:['How Good Is Your English?',
-				'Best Friend For Learing',
+			title:['Best Friend For Learing',
 				'Redesign Both Internal Systems And External Services',
+			    'How Good Is Your English?',
 				'Keep Track Of Kid\'s Learning?',
 				'Effects Of Trust & Safety On Mobile Payment Decisions',
 				'Creatures in the Forest'],	
 
-			subtitle:['App Design','Bot Design','WEB Design  / UX Research','App Design / UX Research','UX Research','Art'],
+			subtitle:['WEB Design  / UX Research', 'Bot Design', 'App Design', 'App Design / UX Research','UX Research','Art'],
 		}
 
 		const quiz = () => { 

@@ -150,7 +150,7 @@ class PortfolioItemPool3 extends Component {
 			},
 
 			{	
-				subtitle:'MASSAGE SYSTEM',
+				subtitle:'MESSAGE SYSTEM',
 				pic: [{w3pic_14}]
 			
 			},

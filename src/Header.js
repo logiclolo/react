@@ -13,7 +13,7 @@ import {
 class MenuBar extends Component {
 
 	home() {
-		location.reload()	
+		window.location.reload()	
 	}
 	render() {
 		const logo = 'WALO' 

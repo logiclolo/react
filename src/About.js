@@ -28,7 +28,7 @@ class About extends Component {
 		const headline = 'About Me'
 		const sub_headline = '' 
 		const main_pic = {mainpic} 
-		var preface = 'I’m a Taiwanese UX designer with diverse backgrounds and multiple interests. I studied finance in college, and then got a master’s degree in both HCI and industrial engineering. Now I work as a user experience designer focusing on interaction design and user research.'
+        var preface = 'I’m a self-taught designer with diverse backgrounds and multiple interests.Studied finance in college,then I dug into HCI and industrial engineering in grad school.Now I work as a product designer,focusing on interaction design and user research for almost four years.With the curiosity to human nature,I keep exploring the differences and discovering the unknowns.As an enthusiastic maker,I enjoy tackling the difficulties and creating simple solutions.'
 
 		
 
@@ -43,15 +43,14 @@ class About extends Component {
 		var contents = [
 			
 			{
-				subtitle: 'PROFESSION',			 
-				
-			
+				subtitle: 'RESUME',			 
+                PDF: 'pdf/cv.pdf',
+                LinkedIn: 'www.linkedin.com/in/hualo/'
 			},
 			
 			{
 				subtitle: 'SOCIAL NETWORK',			 
-				
-
+                Instagram: 'www.instagram.com/walo.lo/'
 			},
 
 				
@@ -81,11 +80,20 @@ class About extends Component {
 
 						return pic
 					}
-					else if (key === 'url'){
+					else if (key === 'Instagram' || key === 'LinkedIn'){
 						return(
-							<div className="desc">
-							<Link to={content.url} target='_blank'>
-								Launch Site
+							<div className="external-link">
+							<a href={'https://' + content[key]} target='_blank'>
+								{key}
+							</a>
+							</div>
+						)
+					}
+					else if (key === 'PDF'){
+						return(
+							<div className="external-link">
+							<Link to={content[key]} target='_blank'>
+								{key}
 							</Link>
 							</div>
 						)

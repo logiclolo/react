@@ -12,7 +12,7 @@ import {
 class Navigation extends Component {
 
 	reload() {
-		setTimeout(function(){location.reload()}, 100)
+		setTimeout(function(){window.location.reload()}, 100)
 	}
 
 	render() {

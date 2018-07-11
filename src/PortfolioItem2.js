@@ -46,7 +46,7 @@ class PortfolioItemPool2 extends Component {
 		var contents = [
 			{
 				title: 'Background',
-				desc: "Foxccon is looking for partnership and  application for its robot. Therefore we proposed a few scenarios about how human being might interact with robot when it comes to learning.",
+				desc: "Foxconn is looking for partnership and  application for its robot. Therefore we proposed a few scenarios about how human being might interact with robot when it comes to learning.",
 
 			},
 
@@ -57,7 +57,7 @@ class PortfolioItemPool2 extends Component {
 
 			{
 				title: 'EnglishBot',			 
-				subtitle:'GETTING INTO KNOW EACH OTHERS',
+				subtitle:'GETTING TO KNOW EACH OTHER',
 				pic: [{w2pic_3}]
 			
 			},
@@ -105,9 +105,9 @@ class PortfolioItemPool2 extends Component {
 					else if (key === 'url'){
 						return(
 							<div className="external-link">
-							<Link to={content.url} target='_blank'>
+							<a href={content.url} target='_blank'>
 								MathBot Prototype
-							</Link>
+							</a>
 							</div>
 						)
 					}

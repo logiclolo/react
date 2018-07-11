@@ -17,7 +17,7 @@ import MessageMe from './MessageMe';
 import About from './About';
 import $ from 'jquery';
 import portfolioitem1 from './PortfolioItem1.js';
-import User from './components/User';
+//import User from './components/User';
 
 class Focus extends Component {
 	constructor() {
@@ -150,14 +150,14 @@ render() {
 			name: 'MESSAGE ME',
 			exact: true,
 			component: MessageMe,
-			sub_routes: [
-				{
-					path: '/messageme/info',
-					name: 'Info',
-					component: User,
+			//sub_routes: [
+				//{
+					//path: '/messageme/info',
+					//name: 'Info',
+					//component: User,
 				
-				}
-			]
+				//}
+			//]
 		},
 	]
 
